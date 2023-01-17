@@ -12,13 +12,13 @@ function AddTodoForm(props) {
 
     function handleAddTodo(event) {
         event.preventDefault();
-        props.onAddTodo({title: todoTitle, id: Date.now()});
+        props.onAddTodo({fields: {Title: todoTitle}, id: Date.now()});
         setTodoTitle('');
     }
 
     return (
         <form onSubmit={handleAddTodo}>
-           <InputWithLabel todoTitle={todoTitle} handleTitleChange={handleTitleChange}>Title: </InputWithLabel>
+            <InputWithLabel todoTitle={todoTitle} handleTitleChange={handleTitleChange}>Title: </InputWithLabel>
         </form>
     );
 }
