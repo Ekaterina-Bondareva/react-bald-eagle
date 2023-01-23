@@ -1,5 +1,7 @@
 import React from "react";
 
+import styles from './InputWithLabel.module.css';
+
 function InputWithLabel (props) {
 
     const inputRef = React.useRef();
@@ -10,8 +12,9 @@ function InputWithLabel (props) {
 
     return (
         <>
-            <label htmlFor="todoTitle">{props.children}</label>
+            <label className={styles.TodoLabel} htmlFor="todoTitle">{props.children}</label>
             <input 
+                className={styles.TodoInput}
                 ref={inputRef}
                 type="text" 
                 id="todoTitle" 
@@ -19,7 +22,7 @@ function InputWithLabel (props) {
                 value={props.todoTitle}
                 onChange={props.handleTitleChange}>
             </input>
-            <button type="submit">Add</button>
+            <button className={styles.TodoButton} type="submit">Add</button>
         </>
     );
 

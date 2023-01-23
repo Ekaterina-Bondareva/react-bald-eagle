@@ -1,0 +1,31 @@
+.TodoLabel {
+    margin-right: 1em;
+    color: #415A77;
+}
+
+.TodoInput {
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+    border: 1.5px solid #E0E1DD;
+}
+
+.TodoButton {
+    margin-left: 1em;
+    background:  #415A77;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 20px;
+    box-shadow: 5px 5px 0 #1b263b;
+    position: relative;
+    left: 0;
+    top: 0;
+    transition: 1s;
+}
+
+.TodoButton:hover {
+    left: 5px;
+    top: 5px;
+    box-shadow: 0 0 0 #1b263b;
+}

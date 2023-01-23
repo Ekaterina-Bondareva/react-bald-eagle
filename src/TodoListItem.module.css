@@ -1,0 +1,18 @@
+.ListItem {
+    display: flex;
+    margin-top: 0.75em;
+    color: #0d1b2a;
+    list-style-type: none;
+}
+
+.ListItemTrashIcon {
+    margin-left: 10px;
+    border: none;
+    background-color: #E0E1DD;
+    position: relative; 
+    transition: 1s;
+}
+
+.ListItemTrashIcon:hover {
+    transform: scale(1.2);
+}
