@@ -7,6 +7,7 @@ import {
   Route,
 } from 'react-router-dom';
 
+import styles from './App.module.css';
 
 function App() {
 
@@ -48,7 +49,7 @@ function App() {
               <p>Loading...</p> 
             ) : (
               <>
-                <h1>Todo List</h1>
+                <h1  className={styles.MainHeader}>ToDo List</h1>
                 <AddTodoForm onAddTodo={addTodo}/>
                 <TodoList todoList={todoList}  onRemoveTodo={removeTodo}/>
               </>
