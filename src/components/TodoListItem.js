@@ -2,7 +2,10 @@ import React from "react";
 
 import styles from './TodoListItem.module.css';
 
-import { ReactComponent as TrashIcon } from './trash.svg';
+import { ReactComponent as TrashIcon } from '../trash.svg';
+
+import PropTypes from 'prop-types';
+
 
 function TodoListItem(props) {
     return (
@@ -14,5 +17,10 @@ function TodoListItem(props) {
         </li>
     );
 }
+
+TodoListItem.propTypes = {
+    onRemoveTodo: PropTypes.func
+};
+
 
 export default TodoListItem;
