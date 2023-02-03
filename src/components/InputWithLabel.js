@@ -2,6 +2,9 @@ import React from "react";
 
 import styles from './InputWithLabel.module.css';
 
+import PropTypes from 'prop-types';
+
+
 function InputWithLabel (props) {
 
     const inputRef = React.useRef();
@@ -25,7 +28,11 @@ function InputWithLabel (props) {
             <button className={styles.TodoButton} type="submit">Add</button>
         </>
     );
-
 } 
+
+InputWithLabel.propTypes = {
+    handleTitleChange: PropTypes.func
+};
+
 
 export default InputWithLabel;
