@@ -1,81 +1,54 @@
-import React from 'react';
-import AddTodoForm from './components/AddTodoForm';
-import TodoList from './components/TodoList';
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-} from 'react-router-dom';
-
+import React, {useState, useEffect, useRef} from 'react';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import TodoContainer from './components/TodoContainer';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import HomePage from './HomePage';
 import styles from './App.module.css';
 
-function App() {
 
-  const [todoList, setTodoList] = React.useState([]);
+const App = ()  => {
+  const [backgroundImage, setBackgroundImage] = useState({});
 
-  const [isLoading, setIsLoading] = React.useState(true);
+  const [isError, setIsError] = useState(false);
 
-  React.useEffect(() => {
-    fetch(`https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`, {
-      method: 'GET',
-      headers: {
-        'Authorization': `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
-      }
+  //Fetch Background Image from https://unsplash.com/developers
+  useEffect(() => {
+    const backgroundImageUrl = `https://api.unsplash.com/photos/random?orientation=landscape&query=nature&client_id=oTTC8RDgHH3UB6TLrQMYu7RVzo9caw6p0jIuj3g2Cz0`;
+
+    fetch(backgroundImageUrl, {
+        method: 'GET'
     })
     .then((response) => response.json())
     .then(result => {
-      setTodoList(result.records);
-      setIsLoading(false);
-    });
+      setBackgroundImage({
+            "url": result.urls.raw 
+        })
+        setIsError(false);
+    })
+    .catch(() => setIsError(true));
   }, []);
 
-  React.useEffect(() => {
-    if (!isLoading) {
-      localStorage.setItem('savedTodoList', JSON.stringify(todoList));
-    }
-  }, [isLoading, todoList]);
-
-  function addTodo(newTodo) {
-    setTodoList([...todoList, newTodo]);
-  }
-
-
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route exact path="/" element={
-          <>
-            {isLoading ? (
-              <p>Loading...</p> 
-            ) : (
-              <>
-                <h1  className={styles.MainHeader}>ToDo List</h1>
-                <AddTodoForm onAddTodo={addTodo}/>
-                <TodoList todoList={todoList}  onRemoveTodo={removeTodo}/>
-              </>
-            )}
-          </>
-        }>          
-        </Route>
-
-        <Route  path='/new' element={
-          <>
-            <h1>New Todo List</h1>
-          </>
-        }
-        >
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <div 
+      className={styles.App} 
+      style={{backgroundImage: `url(${backgroundImage.url}&w=${useRef(window.innerWidth).current})`}}
+    >
+      {isError && <p>Something went wrong ...</p>}
+      <BrowserRouter>
+        <Header />
+          <Routes>
+            <Route exact path="/" element={<TodoContainer />}></Route>
+            <Route path="/home" element={<HomePage />}></Route>
+            <Route  path='/new' element={<><h1>New Todo List</h1></>}></Route>
+          </Routes>
+        <Footer />
+      </BrowserRouter>
+    </div>
   );
+};
 
-  function removeTodo(id) {
-    const newTodoList = todoList.filter(
-      (todo) => id !== todo.id
-    );
-
-    setTodoList(newTodoList);
-  };
-}
 
 export default App;
+
+

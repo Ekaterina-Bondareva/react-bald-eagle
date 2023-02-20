@@ -4,10 +4,16 @@
 }
 
 .TodoInput {
-    width: 100%;
-    padding: 5px;
+    width: 60%;
     box-sizing: border-box;
-    border: 1.5px solid #E0E1DD;
+    /* border: 1.5px solid #E0E1DD; */
+    border: none;
+    outline:none;
+    margin-top: 1rem;
+}
+
+textarea:focus, input:focus {
+    color: #0d1b2a;
 }
 
 .TodoButton {

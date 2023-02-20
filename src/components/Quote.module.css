@@ -1,0 +1,28 @@
+.QuoteContainer {
+    color: #fff;
+    font-size: 1rem;
+    font-style: italic;
+    width: 90%;
+}
+
+.Quote {
+    margin-bottom: 0.3rem;
+}
+
+@media (min-width: 768px) {
+    .QuoteContainer {
+        color: #fff;
+        font-size: 1rem;
+        font-style: italic;
+        width: 90%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .QuoteContainer {
+        color: #fff;
+        font-size: 1rem;
+        font-style: italic;
+        width: 40%;
+    }
+}

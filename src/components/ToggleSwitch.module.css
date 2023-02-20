@@ -1,0 +1,8 @@
+.ToggleSwitch {
+    display: flex;
+    justify-content: center;
+}
+
+.ToggleSwitchLabel {
+    margin-right: 20px;
+}

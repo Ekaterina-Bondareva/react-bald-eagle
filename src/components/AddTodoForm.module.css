@@ -1,13 +1,5 @@
 .TodoForm {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: #fff;
-    border-radius: 20px;
-    width: 90%;
-    margin: auto;
-    padding: 5%;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
 @media (min-width: 768px) {
@@ -20,6 +12,6 @@
 @media (min-width: 1024px) {
     .TodoForm {
         width: 500px;
-        padding: 25px;
+        padding: 0;
     }
 }
