@@ -9,19 +9,21 @@ const Dropdown = ({ trigger, menu }) => {
         setOpen(!open);
     };
 
-    const menuRef = useRef(null)
-    const [listening, setListening] = useState(false)
+    const menuRef = useRef(null);
+    const [listening, setListening] = useState(false);
 
     useEffect(() => {
         if (listening) return
         if (!menuRef.current) return
         setListening(true);
-        [`click`, `touchstart`].forEach((type) => {
-                document.addEventListener(`click`, (evt) => {
+        ['click', 'touchstart'].forEach((type) => {
+                document.addEventListener('click', (evt) => {
                     const cur = menuRef.current
                     const node = evt.target
-                    if (cur.contains(node)) return
-                    setOpen(false)
+                    if (cur !== null && cur.contains(node)) {
+                        return;
+                    } 
+                    setOpen(false);
                 })
         })
     }, [listening, setListening, menuRef, setOpen])
