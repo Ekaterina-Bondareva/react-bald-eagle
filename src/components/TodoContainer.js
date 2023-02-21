@@ -5,7 +5,7 @@ import styles from './TodoContainer.module.css';
 import ToggleSwitch from './ToggleSwitch.js';
 
 
-const TodoContainer = () => {
+const TodoContainer = ({listId}) => {
 
     const [todoList, setTodoList] = useState([]);
 
@@ -38,7 +38,8 @@ const TodoContainer = () => {
 
     //Fetch Todo list from Airtable  (READ)
     useEffect(() => {
-        fetch(`${url}?view=Grid%20view`, {
+        //Fetch only data with this ListID (filterByFormula=ListID%3D${listId})
+        fetch(`${url}?view=Grid%20view&filterByFormula=ListID%3D${listId}`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
@@ -55,7 +56,7 @@ const TodoContainer = () => {
             setIsError(true)
             setIsLoading(false);
         });
-    }, [toggleChecked, url]);
+    }, [toggleChecked, url, listId]);
 
     useEffect(() => {
         if (!isLoading) {
@@ -68,7 +69,8 @@ const TodoContainer = () => {
         let body = JSON.stringify(
             {
                 fields: {
-                    "Title": newTodo.fields.Title
+                    "Title": newTodo.fields.Title,
+                    "ListID": listId
                 }  
             }
         )
@@ -117,7 +119,8 @@ const TodoContainer = () => {
         let body = JSON.stringify({
             "fields": {
                 "Title": item.fields.Title,
-                "Completed": item.fields.Completed
+                "Completed": item.fields.Completed,
+                "ListID": listId
             }
         });
         fetch(`${url}/${item.id}`, {

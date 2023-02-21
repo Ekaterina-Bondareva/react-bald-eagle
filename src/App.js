@@ -3,7 +3,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import TodoContainer from './components/TodoContainer';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import HomePage from './HomePage';
+import HomePage from './components/HomePage';
 import styles from './App.module.css';
 
 
@@ -38,9 +38,9 @@ const App = ()  => {
       <BrowserRouter>
         <Header />
           <Routes>
-            <Route exact path="/" element={<TodoContainer />}></Route>
+            <Route exact path="/" element={<TodoContainer listId='1'/>}></Route>
             <Route path="/home" element={<HomePage />}></Route>
-            <Route  path='/new' element={<><h1>New Todo List</h1></>}></Route>
+            <Route  path='/new' element={<TodoContainer listId='2'/>}></Route>
           </Routes>
         <Footer />
       </BrowserRouter>

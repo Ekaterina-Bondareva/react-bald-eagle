@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { ReactComponent as SearchIcon } from '../search.svg';
+import { ReactComponent as SearchIcon } from '../icons/search.svg';
 import styles from './owfont-regular.css';
 import style from './Weather.module.css';
 

@@ -1,15 +1,8 @@
 body {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 100%;
 }
-
-/* .MainHeader {
-    color: #415A77;
-    font-weight: bolder;
-    text-align: center;
-    font-size: 2.5rem;
-} */
 
 .TodoContainer {
     display: flex;
@@ -17,24 +10,22 @@ body {
     justify-content: space-between;
     background: #fff;
     border-radius: 20px;
-    width: 40%;
+    width: 90%;
     margin: auto;
-    padding: 2%;
+    padding: 1rem;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
-.Loading {
-
-}
-
 @media (min-width: 768px) {
-    /* .MainHeader {
-        font-size: 3rem;
-    } */
+    .TodoContainer {
+        width: 60%;
+        padding: 1rem;
+    }
 }
 
 @media (min-width: 1024px) {
-    /* .MainHeader {
-        font-size: 3.5rem;
-    } */
+    .TodoContainer {
+        width: 40%;
+        padding: 1.5rem;
+    }
 }

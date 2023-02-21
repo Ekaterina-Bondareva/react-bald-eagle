@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
-import styles from './TodoListItem.module.css';
-import { ReactComponent as TrashIcon } from '../trash.svg';
-import { ReactComponent as EmptyCheckbox } from '../empty-checkbox.svg';
-import { ReactComponent as CheckedCheckbox } from '../checked-checkbox.svg';
 import PropTypes from 'prop-types';
+import styles from './TodoListItem.module.css';
+import { ReactComponent as CheckedCheckboxIcon } from '../icons/checkedCheckbox.svg';
+import { ReactComponent as EmptyCheckboxIcon } from '../icons/emptyCheckbox.svg';
+import { ReactComponent as HamburgerIcon } from '../icons/hamburger.svg';
+import Dropdown from './Dropdown';
+
 
 
 const TodoListItem = ({item, onRemoveTodo, onCompletedCheck, editTodoItem}) => {
@@ -21,11 +23,19 @@ const TodoListItem = ({item, onRemoveTodo, onCompletedCheck, editTodoItem}) => {
         setCompleted(!completed);
     }
 
-    const handleEditClick = () => setEditable(true);
+    //Handle Delete and Edit using Dropdown
+    const handleEditClick = () => {
+        setEditable(true)
+    };
+
+    const handleDeleteClick = () => {
+        onRemoveTodo(item.id);
+    }
 
     const handleCancelClick = () => {
         setEditable(false);
         setErrorMessage('');
+        setInputValue(item.fields.Title);
     }
 
     const handleSaveClick = () => {
@@ -39,31 +49,45 @@ const TodoListItem = ({item, onRemoveTodo, onCompletedCheck, editTodoItem}) => {
         }
     }
 
+    const handleInputClick = (e) => {
+        if (e.key === 'Enter') {
+            handleSaveClick();
+        } else if (e.key === 'Escape') {
+            handleCancelClick();
+        }
+    }
+
     return (
         <li className={styles.ListItem}>
-            <div>
-                {errorMessage !== '' ? (<p className={styles.Error} >{errorMessage}</p>) :(<p></p>)}
-            </div>
-            <button 
-                className={styles.ListItemCheckbox} 
-                type="button"
-                onClick={handleCompletedClick}>
-                {
-                    completed ? (<CheckedCheckbox height='20px' width='20px' />) :
-                    (<EmptyCheckbox height='20px' width='20px' />) 
+            <span>
+                <div>
+                    {errorMessage !== '' ? (<p className={styles.Error} >{errorMessage}</p>) :(<p></p>)}
+                </div>
+                <button 
+                    className={styles.ListItemCheckbox} 
+                    type="button"
+                    onClick={handleCompletedClick}>
+                    {
+                        completed ?
+                        (<CheckedCheckboxIcon height='20px' width='20px' />) :
+                        (<EmptyCheckboxIcon height='20px' width='20px' />) 
+                    }
+                </button>
+                { !editable ? item.fields.Title : ''}    
+                {editable 
+                    ? (<input type="text" autoFocus defaultValue={inputValue} onChange={(e) => {setInputValue(e.target.value)}} onKeyDown={handleInputClick} />) 
+                    : (null)
                 }
-            </button>
-            {!editable ? item.fields.Title : ''}    
-            {editable 
-                ? (<><input type="text" autoFocus defaultValue={inputValue} onChange={(e) => {setInputValue(e.target.value)}}/> <input type="button" value="Cancel" onClick={handleCancelClick}/><input type="button" value="Save" onClick={handleSaveClick}/></>) 
-                : (<input type="button" value="Edit" onClick={handleEditClick}/>)}       
-            <button 
-                className={styles.ListItemTrashIcon} 
-                type="button" 
-                onClick={() => onRemoveTodo(item.id)}
-            >
-                <TrashIcon height='20px' width='20px' />
-            </button>
+            </span>
+            <span>  
+                <Dropdown 
+                    trigger={<button className={styles.Hamburger}><HamburgerIcon className={styles.Hamburger} height='20px' width='20px' /></button>}
+                    menu={[
+                        <button onClick={handleEditClick}>Edit</button>,
+                        <button onClick={handleDeleteClick}>Delete</button>,
+                    ]}
+                />  
+            </span>
     </li>
     );
 }

@@ -1,22 +1,12 @@
 .ListItem {
     display: flex;
-    align-items:flex-start;
+    flex-direction: row;
+    /* align-items:flex-start; */
     justify-content: space-between;
-    text-align: left;
+    /* text-align: left; */
     margin-top: 0.75em;
     color: #0d1b2a;
     list-style-type: none;
-}
-
-.ListItemTrashIcon {
-    margin-left: 10px;
-    border: none;
-    position: relative; 
-    transition: 1s;
-}
-
-.ListItemTrashIcon:hover {
-    transform: scale(1.2);
 }
 
 .ListItemCheckbox {
@@ -25,6 +15,7 @@
     transition: 1s;
     background: none;
     color: #0d1b2a;
+    margin-right: 0.5rem;
 }
 
 .Error {
@@ -32,4 +23,13 @@
     margin-top: 0.75em;
     color: #f60505;
     list-style-type: none;
+}
+
+.Hamburger {
+    border: none;
+    position: relative; 
+    transition: 1s;
+    background: none;
+    background-color: #fff;
+    margin: 0 0 0 0
 }
