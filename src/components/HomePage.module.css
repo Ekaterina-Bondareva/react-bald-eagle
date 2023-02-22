@@ -1,0 +1,59 @@
+.HomePage {
+    flex: 1;
+    font-weight: bolder;
+    color: #fff;
+    text-align: center;
+}
+
+.Time {
+    font-size: 3rem;
+    margin: 1rem;
+}
+
+.Date {
+    font-size: 0.8rem;
+    margin: 1rem;
+}
+
+.Greeting {
+    font-size: 1rem;
+    margin: 1rem;
+}
+
+@media (min-width: 768px) {
+    .HomePage {
+        flex: 1;
+    }
+
+    .Time {
+        font-size: 4rem;
+    }
+    
+    .Date {
+        font-size: 1rem;
+    }
+    
+    .Greeting {
+        font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .HomePage {
+        flex: 1;
+    }
+    
+    .Time {
+        font-size: 5.5rem;
+    }
+    
+    .Date {
+        font-size: 1.25rem;
+    }
+    
+    .Greeting {
+        font-size: 2.25rem;
+    }
+}
+
+

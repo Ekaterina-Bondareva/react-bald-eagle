@@ -1,37 +1,41 @@
-import React from "react";
-
+import React, {useRef, useEffect} from 'react';
 import styles from './InputWithLabel.module.css';
-
 import PropTypes from 'prop-types';
 
 
-function InputWithLabel (props) {
+const InputWithLabel = ({todoTitle, handleTitleChange, handleKeyDown, children}) => {
 
-    const inputRef = React.useRef();
+    const inputRef = useRef();
 
-    React.useEffect(() => {
+    useEffect(() => {
         inputRef.current.focus();
     });
 
     return (
         <>
-            <label className={styles.TodoLabel} htmlFor="todoTitle">{props.children}</label>
+            {/* <label className={styles.TodoLabel} htmlFor="todoTitle">{children}</label> */}
             <input 
                 className={styles.TodoInput}
                 ref={inputRef}
                 type="text" 
                 id="todoTitle" 
                 name="title"
-                value={props.todoTitle}
-                onChange={props.handleTitleChange}>
+                placeholder="New Todo"
+                value={todoTitle}
+                onKeyDown={handleKeyDown}
+                onChange={handleTitleChange}>
             </input>
             <button className={styles.TodoButton} type="submit">Add</button>
         </>
     );
 } 
 
+
 InputWithLabel.propTypes = {
-    handleTitleChange: PropTypes.func
+    handleTitleChange: PropTypes.func,
+    handleKeyDown: PropTypes.func,
+    todoTitle: PropTypes.string,
+    children: PropTypes.string
 };
 
 

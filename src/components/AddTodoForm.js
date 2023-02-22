@@ -1,38 +1,51 @@
-import React from "react";
-
-import InputWithLabel from "./InputWithLabel";
-
+import React, {useState} from 'react';
+import InputWithLabel from './InputWithLabel';
 import styles from './AddTodoForm.module.css';
-
 import PropTypes from 'prop-types';
 
 
-function AddTodoForm(props) {
+const AddTodoForm = ({onAddTodo}) => {
+    const [todoTitle, setTodoTitle] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
-    const [todoTitle, setTodoTitle] = React.useState('');
-
-    function handleTitleChange(event) {
+    const handleTitleChange = (event) => {
         const newTodoTitle = event.target.value;
         setTodoTitle(newTodoTitle);
-    }
+    };
 
-    function handleAddTodo(event) {
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            const newTodoTitle = event.target.value;
+            setTodoTitle(newTodoTitle);
+        }
+    };
+
+    const handleAddTodo = (event) => {
+        if (todoTitle === '') {
+            event.preventDefault();
+            setErrorMessage('Todo cannot be empty');
+            return;
+        }
+        setErrorMessage('');
         event.preventDefault();
-        props.onAddTodo({fields: {Title: todoTitle}, id: Date.now()});
+        onAddTodo({fields: {Title: todoTitle}, id: Date.now()});
         setTodoTitle('');
-    }
+    };
 
     return (
         <form className={styles.TodoForm} onSubmit={handleAddTodo}>
             <InputWithLabel 
-                todoTitle={todoTitle} 
+                todoTistle={todoTitle} 
                 handleTitleChange={handleTitleChange}
+                handleKeyDown={handleKeyDown}
             >
-                Title:  
+                {/* Title:   */}
             </InputWithLabel>
+            <>{errorMessage}</>
         </form>
     );
-}
+};
+
 
 AddTodoForm.propTypes = {
     onAddTodo: PropTypes.func

@@ -1,0 +1,31 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+.TodoContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #fff;
+    border-radius: 20px;
+    width: 90%;
+    margin: auto;
+    padding: 1rem;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+@media (min-width: 768px) {
+    .TodoContainer {
+        width: 60%;
+        padding: 1rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .TodoContainer {
+        width: 30%;
+        padding: 1.5rem;
+    }
+}
