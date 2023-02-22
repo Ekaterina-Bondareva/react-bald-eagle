@@ -3,23 +3,29 @@ import AddTodoForm from './AddTodoForm.js';
 import TodoList from './TodoList';
 import styles from './TodoContainer.module.css';
 import ToggleSwitch from './ToggleSwitch.js';
+import PropTypes from 'prop-types';
+import Select from 'react-select';
 
 
 const TodoContainer = ({listId}) => {
+    const url = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`;
+
+    const options = [
+        {value: 'completed', label: 'Completed'},
+        {value: 'title', label: 'Title'}
+    ]
 
     const [todoList, setTodoList] = useState([]);
-
     const [isLoading, setIsLoading] = useState(true);
-
-    const [toggleChecked, setToggleChecked] = useState(true);
-
     const [isError, setIsError] = useState(false);
+    const [sortField, setSortField] = useState('completed');
+
+    //Handle "Sort by Title" Toggle Switch
+    const [toggleChecked, setToggleChecked] = useState(true);
 
     const handleToggleChange = (val) => {
         setToggleChecked(val);
     }
-    
-    const url = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`;
 
     //Sorting function. Sort Todo list Data by "Title" A-to-Z or Z-to-A with Toggle button
     const sortByTitle = (flag, array) => {
@@ -36,6 +42,25 @@ const TodoContainer = ({listId}) => {
         }
     }
 
+    //Sorting function. Sort Todo list Data by "Completed" 
+    const sortByCompleted = (direction, array) => {
+        if (direction) {
+            //Not completed first
+            array.sort((a, b) => {
+                if (a.fields.Completed && !b.fields.Completed) return 1;
+                if (!a.fields.Completed && b.fields.Completed) return -1;
+                return 0;
+            })
+        } else {
+            //Completed first
+            array.sort((a, b) => {
+                if (a.fields.Completed && !b.fields.Completed) return -1;
+                if (!a.fields.Completed && b.fields.Completed) return 1;
+                return 0;
+            }); 
+        }    
+    };
+
     //Fetch Todo list from Airtable  (READ)
     useEffect(() => {
         //Fetch only data with this ListID (filterByFormula=ListID%3D${listId})
@@ -47,7 +72,11 @@ const TodoContainer = ({listId}) => {
         })
         .then((response) => response.json())
         .then(result => {
-            sortByTitle(toggleChecked, result.records);
+            if (sortField === 'title') {
+                sortByTitle(toggleChecked, result.records);
+            } else {
+                sortByCompleted(toggleChecked, result.records);
+            }
             setTodoList(result.records);
             setIsLoading(false);
             setIsError(false);
@@ -56,7 +85,7 @@ const TodoContainer = ({listId}) => {
             setIsError(true)
             setIsLoading(false);
         });
-    }, [toggleChecked, url, listId]);
+    }, [toggleChecked, url, listId, sortField]);
 
     useEffect(() => {
         if (!isLoading) {
@@ -150,8 +179,10 @@ const TodoContainer = ({listId}) => {
                 <p className={styles.Loading}>Loading...</p> 
             ) : (
                 <div className={styles.TodoContainer}>
-                    {/* <h1  className={styles.MainHeader}>ToDo List</h1> */}
                     <ToggleSwitch toggleChecked={toggleChecked} handleToggleChange={handleToggleChange}/>
+                    <Select options={options} defaultValue={{value: 'completed', label: 'Completed'}} onChange={(e) => {
+                        setSortField(e.value)
+                    }}/>
                     <TodoList todoList={todoList}  onRemoveTodo={removeTodo} markCompleted={markCompleted} editTodoItem={editTodoItem}/>
                     <AddTodoForm onAddTodo={addTodo}/>
                 </div>
@@ -159,6 +190,11 @@ const TodoContainer = ({listId}) => {
         </>
     );
 }
+
+
+TodoContainer.propTypes = {
+    listId: PropTypes.string
+};
 
 
 export default TodoContainer;

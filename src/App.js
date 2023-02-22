@@ -29,20 +29,24 @@ const App = ()  => {
     .catch(() => setIsError(true));
   }, []);
 
+
   return (
     <div 
-      className={styles.App} 
       style={{backgroundImage: `url(${backgroundImage.url}&w=${useRef(window.innerWidth).current})`}}
     >
       {isError && <p>Something went wrong ...</p>}
       <BrowserRouter>
+      <div className={styles.AppBody} >
         <Header />
           <Routes>
             <Route exact path="/" element={<TodoContainer listId='1'/>}></Route>
             <Route path="/home" element={<HomePage />}></Route>
-            <Route  path='/new' element={<TodoContainer listId='2'/>}></Route>
+            <Route  path='/travel' element={<TodoContainer listId='2'/>}></Route>
+            <Route  path='/education' element={<TodoContainer listId='3'/>}></Route>
+            <Route  path='/family' element={<TodoContainer listId='4'/>}></Route>
           </Routes>
         <Footer />
+      </div>
       </BrowserRouter>
     </div>
   );

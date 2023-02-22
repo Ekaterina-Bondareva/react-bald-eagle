@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from './Dropdown.module.css';
+import PropTypes from 'prop-types';
 
 
+//Creating Dropdown reusable component (https://www.robinwieruch.de/react-dropdown/)
 const Dropdown = ({ trigger, menu }) => {
     const [open, setOpen] = useState(false);
 
@@ -13,13 +15,17 @@ const Dropdown = ({ trigger, menu }) => {
     const [listening, setListening] = useState(false);
 
     useEffect(() => {
-        if (listening) return
-        if (!menuRef.current) return
+        if (listening) {
+            return;
+        }
+        if (!menuRef.current) {
+            return;
+        }
         setListening(true);
         ['click', 'touchstart'].forEach((type) => {
                 document.addEventListener('click', (evt) => {
-                    const cur = menuRef.current
-                    const node = evt.target
+                    const cur = menuRef.current;
+                    const node = evt.target;
                     if (cur !== null && cur.contains(node)) {
                         return;
                     } 
@@ -50,5 +56,12 @@ const Dropdown = ({ trigger, menu }) => {
         </div>
     );
 };
+
+
+Dropdown.propTypes = {
+    trigger: PropTypes.element,
+    menu: PropTypes.array
+};
+
 
 export default Dropdown;

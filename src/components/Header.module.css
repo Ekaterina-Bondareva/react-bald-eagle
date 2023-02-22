@@ -2,9 +2,8 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    height: 20vh;
+    height: 15vh; 
     padding: 15px 20px 0px 20px;
-    font-size: 0.5rem;
     color: #fff;
 }
 
@@ -15,13 +14,8 @@
 
 @media (min-width: 768px) {
     .Header {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        height: 23.5vh;
         padding: 10px 10px 0px 10px;
-        font-size: 0.5rem;
-        color: #fff;
+        height: 15vh; 
     }
 
     .HomeIcon {
@@ -32,12 +26,8 @@
 
 @media (min-width: 1024px) {
     .Header {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        height: 23.5vh;
         padding: 20px 20px 0px 20px;
-        font-size: 1rem;
+        height: 20vh; 
     }
 
     .HomeIcon {

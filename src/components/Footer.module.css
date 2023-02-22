@@ -3,7 +3,6 @@
     flex-direction: column;
     text-align:center;
     align-items: center;
-    height: 20%;
     padding: 0px 20px 20px 20px;
     font-size: 1.5rem;   
 }
@@ -11,6 +10,7 @@
 .ToDoLink {
     color: #fff;
     font-size: 1rem;
+    margin-top: 2rem;
 }
 
 .Footer a {
@@ -21,13 +21,10 @@
 @media (min-width: 768px) {
     .Footer {
         display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: flex-end;
-        text-align: left;
-        min-height: 23.5vh;   /*???*/
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
         padding: 0px 20px 20px 20px;
-        font-size: 1.5rem;   
     }
     
     .ToDoLink {
@@ -43,10 +40,10 @@
 @media (min-width: 1024px) {
     .Footer {
         display: flex;
+        flex-direction: row;
         justify-content: space-between;
         align-items: flex-end;
         text-align: left;
-        min-height: 23.5vh;   /*???*/
         padding: 0px 20px 20px 20px;
         font-size: 1.5rem;   
     }

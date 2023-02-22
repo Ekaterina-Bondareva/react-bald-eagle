@@ -1,4 +1,5 @@
 .HomePage {
+    flex: 1;
     font-weight: bolder;
     color: #fff;
     text-align: center;
@@ -21,48 +22,37 @@
 
 @media (min-width: 768px) {
     .HomePage {
-        font-weight: bolder;
-        color: #fff;
-        text-align: center;
+        flex: 1;
     }
-    
+
     .Time {
         font-size: 4rem;
-        margin: 1rem;
     }
     
     .Date {
         font-size: 1rem;
-        margin: 1rem;
     }
     
     .Greeting {
         font-size: 1.5rem;
-        margin: 1rem;
     }
 }
 
 @media (min-width: 1024px) {
     .HomePage {
-        font-weight: bolder;
-        color: #fff;
-        text-align: center;
-        height: 50vh;
+        flex: 1;
     }
     
     .Time {
         font-size: 5.5rem;
-        margin: 1rem;
     }
     
     .Date {
         font-size: 1.25rem;
-        margin: 1rem;
     }
     
     .Greeting {
         font-size: 2.25rem;
-        margin: 1rem;
     }
 }
 
