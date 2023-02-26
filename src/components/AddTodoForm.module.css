@@ -1,5 +1,5 @@
 .TodoForm {
-    display: flex;
+    /* display: flex; */
 }
 
 @media (min-width: 768px) {
@@ -11,7 +11,7 @@
 
 @media (min-width: 1024px) {
     .TodoForm {
-        width: 500px;
+        width: 100%;
         padding: 0;
     }
 }

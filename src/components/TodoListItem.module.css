@@ -1,21 +1,19 @@
 .ListItem {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
     display: flex;
-    flex-direction: row;
-    /* align-items:flex-start; */
     justify-content: space-between;
-    /* text-align: left; */
-    margin-top: 0.75em;
-    color: #0d1b2a;
-    list-style-type: none;
+    margin-top: 0;
 }
 
 .ListItemCheckbox {
+    vertical-align: text-top;
     border: none;
     position: relative; 
     transition: 1s;
     background: none;
     color: #0d1b2a;
-    margin-right: 0.5rem;
+    margin-right: 0.75rem;
 }
 
 .Error {

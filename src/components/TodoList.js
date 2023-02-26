@@ -16,22 +16,22 @@ const TodoList = ({todoList, onRemoveTodo, markCompleted, editTodoItem}) => {
     {
       completed ? (<p align="center">You did it! Great job!</p>) :(<p></p>)
     }
-    <ul className={styles.TodoList}>
-        {todoList.map((item) => 
-          <TodoListItem 
-            key={item.id}
-            item={item} 
-            onRemoveTodo={onRemoveTodo} 
-            editTodoItem={editTodoItem}
-            
-            onCompletedCheck={() => {
-              markCompleted(item); 
-              setCompleted(todoList.reduce((accumulator, currentValue) => 
-                accumulator && (currentValue.fields.Completed !== 'undefined' && currentValue.fields.Completed), true))
-            }}
-          />
-        )}
-    </ul>
+      <ul className={styles.TodoList}>
+          {todoList.map((item) => 
+            <TodoListItem 
+              key={item.id}
+              item={item} 
+              onRemoveTodo={onRemoveTodo} 
+              editTodoItem={editTodoItem}
+              
+              onCompletedCheck={() => {
+                markCompleted(item); 
+                setCompleted(todoList.reduce((accumulator, currentValue) => 
+                  accumulator && (currentValue.fields.Completed !== 'undefined' && currentValue.fields.Completed), true))
+              }}
+            />
+          )}
+      </ul>
     </>
   );
 }

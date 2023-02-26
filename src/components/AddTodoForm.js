@@ -35,12 +35,10 @@ const AddTodoForm = ({onAddTodo}) => {
     return (
         <form className={styles.TodoForm} onSubmit={handleAddTodo}>
             <InputWithLabel 
-                todoTistle={todoTitle} 
+                todoTitle={todoTitle} 
                 handleTitleChange={handleTitleChange}
                 handleKeyDown={handleKeyDown}
-            >
-                {/* Title:   */}
-            </InputWithLabel>
+            />
             <>{errorMessage}</>
         </form>
     );

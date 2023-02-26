@@ -7,7 +7,6 @@ const Footer = () => {
     return (
         <footer className={styles.Footer}>
             <Quote />
-            <div></div>
             <Link to="/">
                 <p className={styles.ToDoLink}>ToDo</p>
             </Link>

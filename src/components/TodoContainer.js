@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react';
+import { Link } from 'react-router-dom';
+import Select from 'react-select';
 import AddTodoForm from './AddTodoForm.js';
 import TodoList from './TodoList';
 import styles from './TodoContainer.module.css';
 import ToggleSwitch from './ToggleSwitch.js';
 import PropTypes from 'prop-types';
-import Select from 'react-select';
 
 
 const TodoContainer = ({listId}) => {
@@ -19,6 +20,7 @@ const TodoContainer = ({listId}) => {
     const [isLoading, setIsLoading] = useState(true);
     const [isError, setIsError] = useState(false);
     const [sortField, setSortField] = useState('completed');
+    const [open, setOpen] = useState(false);
 
     //Handle "Sort by Title" Toggle Switch
     const [toggleChecked, setToggleChecked] = useState(true);
@@ -179,6 +181,18 @@ const TodoContainer = ({listId}) => {
                 <p className={styles.Loading}>Loading...</p> 
             ) : (
                 <div className={styles.TodoContainer}>
+                    {/* Hamburger menu for ToDo's navigation*/}
+                    <div className={styles.HamburgerMenu}>
+                        <button onClick={() => setOpen(!open)}>Hamburger Menu</button>
+                            {open &&
+                            <div className="RouteOptions">
+                                <Link to="/travel">Travel</Link>
+                                <Link to="/education">Education</Link>
+                                <Link to="/family">Family</Link>
+                                <Link to="/chatgpt">ChatGPT</Link>
+                            </div>
+                        }
+                    </div>
                     <ToggleSwitch toggleChecked={toggleChecked} handleToggleChange={handleToggleChange}/>
                     <Select options={options} defaultValue={{value: 'completed', label: 'Completed'}} onChange={(e) => {
                         setSortField(e.value)

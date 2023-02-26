@@ -58,37 +58,39 @@ const TodoListItem = ({item, onRemoveTodo, onCompletedCheck, editTodoItem}) => {
     }
 
     return (
-        <li className={styles.ListItem}>
-            <span>
-                <div>
-                    {errorMessage !== '' ? (<p className={styles.Error} >{errorMessage}</p>) :(<p></p>)}
-                </div>
-                <button 
-                    className={styles.ListItemCheckbox} 
-                    type="button"
-                    onClick={handleCompletedClick}>
-                    {
-                        completed ?
-                        (<CheckedCheckboxIcon height='20px' width='20px' />) :
-                        (<EmptyCheckboxIcon height='20px' width='20px' />) 
+        <>
+            <div>
+                {errorMessage !== '' ? (<p className={styles.Error} >{errorMessage}</p>) :(<p></p>)}
+            </div>
+            <li className={styles.ListItem}>
+                <span>
+                    <button 
+                        className={styles.ListItemCheckbox} 
+                        type="button"
+                        onClick={handleCompletedClick}>
+                        {
+                            completed ?
+                            (<CheckedCheckboxIcon height='20px' width='20px' />) :
+                            (<EmptyCheckboxIcon height='20px' width='20px' />) 
+                        }
+                    </button>
+                    { !editable ? item.fields.Title : ''}    
+                    {editable 
+                        ? (<input type="text" autoFocus defaultValue={inputValue} onChange={(e) => {setInputValue(e.target.value)}} onKeyDown={handleInputClick} />) 
+                        : (null)
                     }
-                </button>
-                { !editable ? item.fields.Title : ''}    
-                {editable 
-                    ? (<input type="text" autoFocus defaultValue={inputValue} onChange={(e) => {setInputValue(e.target.value)}} onKeyDown={handleInputClick} />) 
-                    : (null)
-                }
-            </span>
-            <span>  
-                <Dropdown 
-                    trigger={<button className={styles.Hamburger}><HamburgerIcon className={styles.Hamburger} height='20px' width='20px' /></button>}
-                    menu={[
-                        <button onClick={handleEditClick}>Edit</button>,
-                        <button onClick={handleDeleteClick}>Delete</button>,
-                    ]}
-                />  
-            </span>
-    </li>
+                </span>
+                <span>  
+                    <Dropdown 
+                        trigger={<button className={styles.Hamburger}><HamburgerIcon className={styles.Hamburger} height='20px' width='20px' /></button>}
+                        menu={[
+                            <button onClick={handleEditClick}>Edit</button>,
+                            <button onClick={handleDeleteClick}>Delete</button>,
+                        ]}
+                    />  
+                </span>
+            </li>
+        </>
     );
 }
 

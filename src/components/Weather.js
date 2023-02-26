@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { ReactComponent as SearchIcon } from '../icons/search.svg';
+import { ReactComponent as SearchIconWhite } from '../icons/search-white.svg';
 import styles from './owfont-regular.css';
 import style from './Weather.module.css';
 
@@ -66,7 +66,7 @@ const Weather = () => {
                         onClick={fireWeatherSearch}
                         className={style.SearchBtn}
                     >
-                        <SearchIcon  className={style.SearchIcon}/>
+                        <SearchIconWhite  className={style.SearchIconWhite}/>
                     </button>
                 </span>
                 <i className={`owf owf-${weather.icon} owf-3x`}></i>

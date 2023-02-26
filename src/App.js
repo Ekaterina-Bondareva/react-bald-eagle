@@ -2,8 +2,9 @@ import React, {useState, useEffect, useRef} from 'react';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import TodoContainer from './components/TodoContainer';
 import Header from './components/Header';
-import Footer from './components/Footer';
 import HomePage from './components/HomePage';
+import Footer from './components/Footer';
+import ChatGPT from './components/ChatGPT';
 import styles from './App.module.css';
 
 
@@ -22,7 +23,7 @@ const App = ()  => {
     .then((response) => response.json())
     .then(result => {
       setBackgroundImage({
-            "url": result.urls.raw 
+          "url": result.urls.raw 
         })
         setIsError(false);
     })
@@ -31,9 +32,7 @@ const App = ()  => {
 
 
   return (
-    <div 
-      style={{backgroundImage: `url(${backgroundImage.url}&w=${useRef(window.innerWidth).current})`}}
-    >
+    <div style={{backgroundImage: `url(${backgroundImage.url}&w=${useRef(window.innerWidth).current})`}}>
       {isError && <p>Something went wrong ...</p>}
       <BrowserRouter>
       <div className={styles.AppBody} >
@@ -44,6 +43,7 @@ const App = ()  => {
             <Route  path='/travel' element={<TodoContainer listId='2'/>}></Route>
             <Route  path='/education' element={<TodoContainer listId='3'/>}></Route>
             <Route  path='/family' element={<TodoContainer listId='4'/>}></Route>
+            <Route  path='/chatgpt' element={<ChatGPT />}></Route>
           </Routes>
         <Footer />
       </div>
