@@ -13,7 +13,6 @@ const ToggleSwitch = ({toggleChecked, handleToggleChange}) => {
                 onChange={handleToggleChange}
                 onColor='#415A77'
                 offColor="#A9A9A9"
-                // height={20}
             />
         </div>
     );

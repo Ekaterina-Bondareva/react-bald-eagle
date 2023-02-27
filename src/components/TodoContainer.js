@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Select from 'react-select';
-import { ReactComponent as HamburgerIcon } from '../icons/hamburger.svg';
 import AddTodoForm from './AddTodoForm.js';
 import TodoList from './TodoList';
-import styles from './TodoContainer.module.css';
 import ToggleSwitch from './ToggleSwitch.js';
+import DropdownLinks from './DropdownLinks.js';
 import PropTypes from 'prop-types';
+import styles from './TodoContainer.module.css';
 
 
 const TodoContainer = ({listId}) => {
@@ -17,11 +17,13 @@ const TodoContainer = ({listId}) => {
         {value: 'title', label: 'Title'}
     ]
 
+    const navigate = useNavigate();
+
     const [todoList, setTodoList] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [isError, setIsError] = useState(false);
     const [sortField, setSortField] = useState('completed');
-    const [open, setOpen] = useState(false);
+    // const [open, setOpen] = useState(false);
 
     //Handle "Sort by Title" Toggle Switch
     const [toggleChecked, setToggleChecked] = useState(true);
@@ -183,16 +185,7 @@ const TodoContainer = ({listId}) => {
             ) : (
                 <div className={styles.TodoContainer}>
                     <div className={styles.TodoNavBar}>
-                        {/* Hamburger menu for ToDo's navigation */}
-                        <button type= "button" onClick={() => setOpen(!open)}  className={styles.Hamburger}><HamburgerIcon /></button>
-                            {open &&
-                                <div className="RouteOptions">
-                                    <Link to="/travel">Travel</Link>
-                                    <Link to="/education">Education</Link>
-                                    <Link to="/family">Family</Link>
-                                    <Link to="/chatgpt">ChatGPT</Link>
-                                </div>
-                            }
+                        <DropdownLinks nav={navigate}/>
                         <Link to="/home">
                             <button type= "button" className={styles.CloseTodoButton}>Close</button>
                         </Link>
