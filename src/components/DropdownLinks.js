@@ -14,21 +14,11 @@ const DropdownLinks = ({nav}) => {
 
     return (
         <select onChange={onChange} className={styles.DropdownLinks}>
-            <option>
-                ToDo
-            </option>
-            <option>
-                Travel
-            </option>
-            <option>
-                Education
-            </option>
-            <option>
-                Family
-            </option>
-            <option>
-                ChatGPT
-            </option>
+            <option value="/" id="/">ToDo</option>
+            <option value="travel" id="travel">Travel</option>
+            <option value="education" id="education">Education</option>
+            <option value="family" id="family">Family</option>
+            <option value="chatgpt" id="chatgpt">ChatGPT</option>
         </select>
     )
 }
