@@ -76,13 +76,20 @@ const TodoListItem = ({item, onRemoveTodo, onCompletedCheck, editTodoItem}) => {
                     </button>
                     { !editable ? item.fields.Title : ''}    
                     {editable 
-                        ? (<input type="text" autoFocus defaultValue={inputValue} onChange={(e) => {setInputValue(e.target.value)}} onKeyDown={handleInputClick} />) 
+                        ? (<input 
+                                type="text" 
+                                className={styles.EditableInput}
+                                autoFocus 
+                                defaultValue={inputValue} 
+                                onChange={(e) => {setInputValue(e.target.value)}} 
+                                onKeyDown={handleInputClick} 
+                            />) 
                         : (null)
                     }
                 </span>
                 <span>  
                     <Dropdown 
-                        trigger={<button className={styles.Hamburger}><HamburgerIcon className={styles.Hamburger} height='20px' width='20px' /></button>}
+                        trigger={<button className={styles.Hamburger}><HamburgerIcon /></button>}
                         menu={[
                             <button onClick={handleEditClick}>Edit</button>,
                             <button onClick={handleDeleteClick}>Delete</button>,

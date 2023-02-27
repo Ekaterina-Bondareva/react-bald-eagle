@@ -1,9 +1,10 @@
 .ListItem {
-    padding: 10px 0;
+    padding: 5px 0;
     border-bottom: 1px solid #eee;
     display: flex;
     justify-content: space-between;
     margin-top: 0;
+    font-size: 0.9rem;
 }
 
 .ListItemCheckbox {
@@ -23,11 +24,23 @@
     list-style-type: none;
 }
 
-.Hamburger {
+.EditableInput {
     border: none;
+    outline: none;
+}
+
+.Hamburger {
+    height: 20px;
+    width: 20px;
+    border: none;
+    background: none;
+}
+
+/*Change vertical aligning*/
+/* .Hamburger {
+    
     position: relative; 
     transition: 1s;
-    background: none;
     background-color: #fff;
     margin: 0 0 0 0
-}
+} */

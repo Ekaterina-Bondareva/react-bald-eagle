@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import Select from 'react-select';
+import { ReactComponent as HamburgerIcon } from '../icons/hamburger.svg';
 import AddTodoForm from './AddTodoForm.js';
 import TodoList from './TodoList';
 import styles from './TodoContainer.module.css';
@@ -183,7 +184,7 @@ const TodoContainer = ({listId}) => {
                 <div className={styles.TodoContainer}>
                     {/* Hamburger menu for ToDo's navigation*/}
                     <div className={styles.HamburgerMenu}>
-                        <button onClick={() => setOpen(!open)}>Hamburger Menu</button>
+                        <button onClick={() => setOpen(!open)}  className={styles.Hamburger}><HamburgerIcon /></button>
                             {open &&
                             <div className="RouteOptions">
                                 <Link to="/travel">Travel</Link>
