@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { ReactComponent as SearchIconWhite } from '../icons/search-white.svg';
 import styles from './owfont-regular.css';
 import style from './Weather.module.css';

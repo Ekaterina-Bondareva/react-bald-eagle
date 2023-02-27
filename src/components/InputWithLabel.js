@@ -1,7 +1,7 @@
-import React, {useRef, useEffect} from 'react';
+import React,  {useRef, useEffect } from 'react';
 import styles from './InputWithLabel.module.css';
 import PropTypes from 'prop-types';
-import { ReactComponent as AddIcon } from '../icons/add-icon.svg';
+import { MdAdd } from "react-icons/md";
 
 
 const InputWithLabel = ({todoTitle, handleTitleChange, handleKeyDown}) => {
@@ -26,7 +26,7 @@ const InputWithLabel = ({todoTitle, handleTitleChange, handleKeyDown}) => {
                 onChange={handleTitleChange}>
             </input>
             <button className={styles.TodoButton} type="submit">
-                <AddIcon  className={styles.AddIcon}/>
+                <MdAdd  className={styles.AddIcon}/>
             </button>
         </div>
     );

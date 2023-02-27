@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import AddTodoForm from './AddTodoForm.js';
 import TodoList from './TodoList';
@@ -6,6 +6,7 @@ import ToggleSwitch from './ToggleSwitch.js';
 import DropdownLinks from './DropdownLinks.js';
 import PropTypes from 'prop-types';
 import styles from './TodoContainer.module.css';
+import { MdClose } from "react-icons/md";
 
 
 const TodoContainer = ({listId}) => {
@@ -180,7 +181,7 @@ const TodoContainer = ({listId}) => {
                     <div className={styles.TodoNavBar}>
                         <DropdownLinks nav={navigate}/>
                         <Link to="/home">
-                            <button type= "button" className={styles.CloseTodoButton}>Close</button>
+                            <button type= "button" className={styles.CloseTodoButton}><MdClose /></button>
                         </Link>
                     </div>
                     <div className={styles.SortContainer} >

@@ -29,6 +29,11 @@ body {
     margin-bottom: 1rem;
 }
 
+.CloseTodoButton {
+    border: none;
+    background: none;
+}
+
 .SortBySelect {
     border: none;
     outline: none;

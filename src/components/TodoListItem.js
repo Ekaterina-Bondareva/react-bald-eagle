@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './TodoListItem.module.css';
 import { ReactComponent as CheckedCheckboxIcon } from '../icons/checkedCheckbox.svg';
