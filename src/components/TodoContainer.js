@@ -197,10 +197,12 @@ const TodoContainer = ({listId}) => {
                             <button type= "button" className={styles.CloseTodoButton}>Close</button>
                         </Link>
                     </div>
-                    <ToggleSwitch toggleChecked={toggleChecked} handleToggleChange={handleToggleChange}/>
-                    <Select className={styles.SelectSearchField} options={options} defaultValue={{value: 'completed', label: 'Completed'}} onChange={(e) => {
-                        setSortField(e.value)
-                    }}/>
+                    <div className={styles.SortContainer}>
+                        <Select className={styles.SelectSearchField} options={options} defaultValue={{value: 'completed', label: 'Completed'}} onChange={(e) => {
+                            setSortField(e.value)
+                        }}/>
+                        <ToggleSwitch toggleChecked={toggleChecked} handleToggleChange={handleToggleChange}/>
+                    </div>
                     <TodoList todoList={todoList}  onRemoveTodo={removeTodo} markCompleted={markCompleted} editTodoItem={editTodoItem}/>
                     <AddTodoForm onAddTodo={addTodo}/>
                 </div>

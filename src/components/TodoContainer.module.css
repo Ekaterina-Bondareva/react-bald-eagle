@@ -26,17 +26,17 @@ body {
 .TodoNavBar {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 0.5rem;
-}
-
-.SelectSearchField {
     margin-bottom: 1rem;
 }
 
-/* .RouteOptions {
+.SelectSearchField {
+    margin: 0 3rem 1rem 3rem;
+}
+
+.SortContainer {
     display: flex;
-    flex-direction: column;
-} */
+    align-items: center;
+}
 
 @media (min-width: 768px) {
     .TodoContainer {
