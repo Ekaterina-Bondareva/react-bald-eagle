@@ -23,6 +23,21 @@ body {
     background: none;
 }
 
+.TodoNavBar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.SelectSearchField {
+    margin-bottom: 1rem;
+}
+
+/* .RouteOptions {
+    display: flex;
+    flex-direction: column;
+} */
+
 @media (min-width: 768px) {
     .TodoContainer {
         width: 60%;

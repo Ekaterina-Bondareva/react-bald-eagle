@@ -182,20 +182,23 @@ const TodoContainer = ({listId}) => {
                 <p className={styles.Loading}>Loading...</p> 
             ) : (
                 <div className={styles.TodoContainer}>
-                    {/* Hamburger menu for ToDo's navigation*/}
-                    <div className={styles.HamburgerMenu}>
-                        <button onClick={() => setOpen(!open)}  className={styles.Hamburger}><HamburgerIcon /></button>
+                    <div className={styles.TodoNavBar}>
+                        {/* Hamburger menu for ToDo's navigation */}
+                        <button type= "button" onClick={() => setOpen(!open)}  className={styles.Hamburger}><HamburgerIcon /></button>
                             {open &&
-                            <div className="RouteOptions">
-                                <Link to="/travel">Travel</Link>
-                                <Link to="/education">Education</Link>
-                                <Link to="/family">Family</Link>
-                                <Link to="/chatgpt">ChatGPT</Link>
-                            </div>
-                        }
+                                <div className="RouteOptions">
+                                    <Link to="/travel">Travel</Link>
+                                    <Link to="/education">Education</Link>
+                                    <Link to="/family">Family</Link>
+                                    <Link to="/chatgpt">ChatGPT</Link>
+                                </div>
+                            }
+                        <Link to="/home">
+                            <button type= "button" className={styles.CloseTodoButton}>Close</button>
+                        </Link>
                     </div>
                     <ToggleSwitch toggleChecked={toggleChecked} handleToggleChange={handleToggleChange}/>
-                    <Select options={options} defaultValue={{value: 'completed', label: 'Completed'}} onChange={(e) => {
+                    <Select className={styles.SelectSearchField} options={options} defaultValue={{value: 'completed', label: 'Completed'}} onChange={(e) => {
                         setSortField(e.value)
                     }}/>
                     <TodoList todoList={todoList}  onRemoveTodo={removeTodo} markCompleted={markCompleted} editTodoItem={editTodoItem}/>

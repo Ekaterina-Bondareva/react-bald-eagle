@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
+import { Link } from 'react-router-dom';
 import styles from './ChatGPT.module.css';
+import { ReactComponent as HamburgerIcon } from '../icons/hamburger.svg';
 import { ReactComponent as SearchIconBlack } from '../icons/search-black.svg';
 
 const ChatGPT = () => {
@@ -7,6 +9,7 @@ const ChatGPT = () => {
     const [query, setQuery] = useState('');
     const [results, setResults] = useState([]);
     const [isLoading, setLoading] = useState(false);
+    const [open, setOpen] = useState(false);
 
     //https://www.codeproject.com/Articles/5350454/Chat-GPT-in-JavaScript
     const queryChatgpt = (e) => {
@@ -61,6 +64,21 @@ const ChatGPT = () => {
     return (
         <div className={styles.ChatGPT}>
             <form onSubmit={queryChatgpt} className={styles.ChatGPTForm}>
+                <div className={styles.ChatGPTNavBar}>
+                    {/* Hamburger menu for ToDo's navigation */}
+                    <button type= "button" onClick={() => setOpen(!open)}  className={styles.Hamburger}><HamburgerIcon /></button>
+                        {open &&
+                            <div className="RouteOptions">
+                                <Link to="/travel">Travel</Link>
+                                <Link to="/education">Education</Link>
+                                <Link to="/family">Family</Link>
+                                <Link to="/chatgpt">ChatGPT</Link>
+                            </div>
+                        }
+                    <Link to="/home">
+                        <button type= "button" className={styles.CloseChatGPTButton}>Close</button>
+                    </Link>
+                </div>
                 <div className={styles.ChatGPTInputForm}>
                     <input 
                         type="text" 

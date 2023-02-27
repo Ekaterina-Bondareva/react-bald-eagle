@@ -37,6 +37,12 @@
 }
 
 /*Change vertical aligning*/
+/* li > * {
+    vertical-align: middle;
+/* } */
+
+/* .Menu > li { */
+
 /* .Hamburger {
     
     position: relative; 
