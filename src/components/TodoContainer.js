@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import Select from 'react-select';
 import AddTodoForm from './AddTodoForm.js';
 import TodoList from './TodoList';
 import ToggleSwitch from './ToggleSwitch.js';
@@ -12,18 +11,12 @@ import styles from './TodoContainer.module.css';
 const TodoContainer = ({listId}) => {
     const url = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`;
 
-    const options = [
-        {value: 'completed', label: 'Completed'},
-        {value: 'title', label: 'Title'}
-    ]
-
     const navigate = useNavigate();
 
     const [todoList, setTodoList] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [isError, setIsError] = useState(false);
     const [sortField, setSortField] = useState('completed');
-    // const [open, setOpen] = useState(false);
 
     //Handle "Sort by Title" Toggle Switch
     const [toggleChecked, setToggleChecked] = useState(true);
@@ -190,10 +183,12 @@ const TodoContainer = ({listId}) => {
                             <button type= "button" className={styles.CloseTodoButton}>Close</button>
                         </Link>
                     </div>
-                    <div className={styles.SortContainer}>
-                        <Select className={styles.SelectSearchField} options={options} defaultValue={{value: 'completed', label: 'Completed'}} onChange={(e) => {
-                            setSortField(e.value)
-                        }}/>
+                    <div className={styles.SortContainer} >
+                        <select className={styles.SortBySelect} onChange={(e) => {setSortField(e.target.value)}}>
+                            <option value="">Sort By:</option>
+                            <option value="completed">Completed</option>
+                            <option value="title">Title</option>
+                        </select>
                         <ToggleSwitch toggleChecked={toggleChecked} handleToggleChange={handleToggleChange}/>
                     </div>
                     <TodoList todoList={todoList}  onRemoveTodo={removeTodo} markCompleted={markCompleted} editTodoItem={editTodoItem}/>
