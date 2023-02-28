@@ -15,6 +15,7 @@ textarea:focus, input:focus {
 .TodoButton {
     background: none;
     border: none;
+    display: flex;
 }
 
 .TodoInputContainer {
@@ -24,10 +25,7 @@ textarea:focus, input:focus {
 }
 
 @media (min-width: 768px) {
-    .AddIcon {
-        height: 25px;
-        width: 25px;
-    }
+
 }
 
 @media (min-width: 1024px) {

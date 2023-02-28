@@ -173,7 +173,7 @@ const TodoContainer = ({listId}) => {
 
     return (
         <>
-            {isError && <p>Something went wrong ...</p>}
+            {isError && <p className={styles.TodoError}>Something went wrong ...</p>}
             {isLoading ? (
                 <p className={styles.Loading}>Loading...</p> 
             ) : (
@@ -181,12 +181,12 @@ const TodoContainer = ({listId}) => {
                     <div className={styles.TodoNavBar}>
                         <DropdownLinks nav={navigate}/>
                         <Link to="/home">
-                            <button type= "button" className={styles.CloseTodoButton}><MdClose /></button>
+                            <button type= "button" className={styles.CloseTodoButton}><MdClose className={styles.CloseBtn}/></button>
                         </Link>
                     </div>
-                    <div className={styles.SortContainer} >
+                    <div className={styles.SortContainer}>
                         <select className={styles.SortBySelect} onChange={(e) => {setSortField(e.target.value)}}>
-                            <option value="">Sort By:</option>
+                            <option value="">Sort By</option>
                             <option value="completed">Completed</option>
                             <option value="title">Title</option>
                         </select>

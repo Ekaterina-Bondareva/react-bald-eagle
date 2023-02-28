@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 import styles from './TodoListItem.module.css';
 import { ReactComponent as CheckedCheckboxIcon } from '../icons/checkedCheckbox.svg';
 import { ReactComponent as EmptyCheckboxIcon } from '../icons/emptyCheckbox.svg';
-import { ReactComponent as HamburgerIcon } from '../icons/hamburger.svg';
 import Dropdown from './Dropdown';
-
+import { IoIosMore } from "react-icons/io";
 
 
 const TodoListItem = ({item, onRemoveTodo, onCompletedCheck, editTodoItem}) => {
@@ -70,8 +69,8 @@ const TodoListItem = ({item, onRemoveTodo, onCompletedCheck, editTodoItem}) => {
                         onClick={handleCompletedClick}>
                         {
                             completed ?
-                            (<CheckedCheckboxIcon height='20px' width='20px' />) :
-                            (<EmptyCheckboxIcon height='20px' width='20px' />) 
+                            (<CheckedCheckboxIcon className={styles.CheckedCheckbox} />) :
+                            (<EmptyCheckboxIcon className={styles.EmptyCheckbox}/>) 
                         }
                     </button>
                     { !editable ? item.fields.Title : ''}    
@@ -89,7 +88,7 @@ const TodoListItem = ({item, onRemoveTodo, onCompletedCheck, editTodoItem}) => {
                 </span>
                 <span>  
                     <Dropdown 
-                        trigger={<button className={styles.Hamburger}><HamburgerIcon /></button>}
+                        trigger={<button className={styles.MoreBtn}><IoIosMore className={styles.IoIosMore} /></button>}
                         menu={[
                             <button onClick={handleEditClick}>Edit</button>,
                             <button onClick={handleDeleteClick}>Delete</button>,

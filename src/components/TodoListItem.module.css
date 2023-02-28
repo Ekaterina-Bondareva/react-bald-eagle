@@ -29,24 +29,13 @@
     outline: none;
 }
 
-.Hamburger {
-    height: 20px;
-    width: 20px;
+.MoreBtn {
+
     border: none;
     background: none;
 }
 
-/*Change vertical aligning*/
-/* li > * {
-    vertical-align: middle;
-/* } */
-
-/* .Menu > li { */
-
-/* .Hamburger {
-    
-    position: relative; 
-    transition: 1s;
-    background-color: #fff;
-    margin: 0 0 0 0
-} */
+.IoIosMore {
+    height: 22px;
+    width: 22px;
+}
