@@ -4,6 +4,7 @@ import { ReactComponent as HomeIcon } from '../icons/home.svg';
 import Weather from "./Weather";
 import styles from './Header.module.css';
 
+
 const Header = () => {
     return (
         <header className={styles.Header}>
@@ -14,5 +15,6 @@ const Header = () => {
         </header>
     )
 }
+
 
 export default Header;

@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    flex-grow: 0.5;
+    /* flex-grow: 0.5; */
     padding: 1rem;
     color: #fff;
 }
@@ -13,10 +13,6 @@
 }
 
 @media (min-width: 768px) {
-    .Header {
-        flex-grow: 0.5;
-    }
-
     .HomeIcon {
         height: 30px;
         width: 30px;
@@ -24,10 +20,6 @@
 }
 
 @media (min-width: 1024px) {
-    .Header {
-        flex-grow: 0.5;
-    }
-
     .HomeIcon {
         height: 35px;
         width: 35px;
