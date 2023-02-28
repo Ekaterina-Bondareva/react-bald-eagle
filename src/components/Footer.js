@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Quote from './Quote';
 import styles from './Footer.module.css';
 
+
 const Footer = () => {
     return (
         <footer className={styles.Footer}>
@@ -13,5 +14,6 @@ const Footer = () => {
         </footer>
     )
 }
+
 
 export default Footer;
