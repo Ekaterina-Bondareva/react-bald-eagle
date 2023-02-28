@@ -4,13 +4,17 @@ import styles from './TodoList.module.css';
 import PropTypes from 'prop-types';
 
 
-//what this functional component doing in general
+// Renders todo list elements
 const TodoList = ({todoList, onRemoveTodo, markCompleted, editTodoItem}) => {
-// ????todolist array or array of objects? what we are doing here
-  const [completed, setCompleted] = useState(
-    todoList.length > 0 && todoList.reduce((accumulator, currentValue) => 
-      accumulator && (currentValue.fields.Completed !== 'undefined' && currentValue.fields.Completed), true)
-  );
+  // Function that check that all todo items were completed
+  const isCompleted = (todoList) => {
+    console.log(todoList.length)
+    return todoList.length > 0 && todoList.reduce((accumulator, currentValue) => 
+      accumulator && (currentValue.fields.Completed !== 'undefined' && currentValue.fields.Completed), 
+    true);
+  };
+
+  const [completed, setCompleted] = useState(isCompleted(todoList));
 
   return (
     <>
@@ -18,7 +22,7 @@ const TodoList = ({todoList, onRemoveTodo, markCompleted, editTodoItem}) => {
       {
         completed ? (<p className={styles.GreatJobMsg}>You did it! Great job!</p>) : (<p></p>)
       }
-      {/* ??? */}
+      {/* Todo list rendering */}
       <ul>
         {todoList.map((item) => 
           <TodoListItem 
@@ -26,11 +30,10 @@ const TodoList = ({todoList, onRemoveTodo, markCompleted, editTodoItem}) => {
             item={item} 
             onRemoveTodo={onRemoveTodo} 
             editTodoItem={editTodoItem}
-            // ???
+            // Recalculated completed status
             onCompletedCheck={() => {
               markCompleted(item); 
-              setCompleted(todoList.reduce((accumulator, currentValue) => 
-                accumulator && (currentValue.fields.Completed !== 'undefined' && currentValue.fields.Completed), true));
+              setCompleted(isCompleted(todoList));
             }}
           />
         )}
