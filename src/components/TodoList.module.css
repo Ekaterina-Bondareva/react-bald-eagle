@@ -1,4 +1,18 @@
-.TodoList {
-    display: flex;
-    flex-direction: column;
+.GreatJobMsg {
+    text-align: center;
+    font-weight: bold;
+    color:  #415a77;
+    font-size: 0.7rem;
+}
+
+@media (min-width: 768px) {
+    .GreatJobMsg {
+        font-size: 0.8rem;
+    }
+}
+
+@media (min-width: 1024px) {  
+    .GreatJobMsg {
+        font-size: 0.9rem;
+    }
 }

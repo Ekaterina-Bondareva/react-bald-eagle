@@ -1,5 +1,5 @@
 .ListItem {
-    padding: 10 px 0;
+    padding: 10px 0;
     border-bottom: 1px solid #eee;
     display: flex;
     justify-content: space-between;
@@ -49,5 +49,6 @@
 @media (min-width: 1024px) {  
     .ListItem {
         font-size: 0.9rem;
+        padding: 10px 0;
     }
 }
