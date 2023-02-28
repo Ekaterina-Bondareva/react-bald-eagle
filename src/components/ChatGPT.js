@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import styles from './ChatGPT.module.css';
 import DropdownLinks from './DropdownLinks';
 import { ReactComponent as SearchIconBlack } from '../icons/search-black.svg';
+import { MdClose } from "react-icons/md";
 
 const ChatGPT = () => {
 
@@ -67,7 +68,7 @@ const ChatGPT = () => {
                 <div className={styles.ChatGPTNavBar}>
                     <DropdownLinks nav={navigate}/>
                     <Link to="/home">
-                        <button type= "button" className={styles.CloseChatGPTButton}>Close</button>
+                        <button type= "button" className={styles.CloseChatGPTButton}><MdClose className={styles.CloseBtn}/></button>
                     </Link>
                 </div>
                 <div className={styles.ChatGPTInputForm}>

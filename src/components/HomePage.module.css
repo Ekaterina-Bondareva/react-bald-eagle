@@ -1,5 +1,5 @@
 .HomePage {
-    flex-grow: 1;
+    flex-grow: 2;
     font-weight: bolder;
     color: #fff;
     text-align: center;
@@ -22,7 +22,7 @@
 
 @media (min-width: 768px) {
     .HomePage {
-        flex: 1;
+        flex-grow: 2;
     }
 
     .Time {

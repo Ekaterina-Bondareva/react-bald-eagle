@@ -1,7 +1,13 @@
 .ChatGPT {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-grow: 2;
     background: #fff;
     border-radius: 20px;
-    margin: 1rem;
+    width: 90%;
+    margin: auto;
+    padding: 1.5rem;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
@@ -11,22 +17,15 @@
     margin-bottom: 1rem;
 }
 
-.Hamburger {
-    height: 20px;
-    width: 20px;
+.CloseChatGPTButton {
     border: none;
     background: none;
-}
-
-.ChatGPTForm {
-    padding: 1.5rem;
-    font-size: 0.9rem;
 }
 
 .ChatGPTInputForm {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .ChatGPTInput {
@@ -34,13 +33,17 @@
     outline: none;
     width: 70%;
     margin-bottom: 1rem;
-    font-size: 1rem;
 }
 
 .ChatGPTBtn {
     background: none;
     border: none;
     margin-bottom: 1rem;
+}
+
+.CloseBtn {
+    height: 25px;
+    width: 25px;
 }
 
 .SearchIconBlack {
@@ -58,15 +61,13 @@ li {
     margin-top: 0.5rem;
     list-style-type: none; 
     text-align: justify;
+    font-size: 0.9rem;
 }
 
 @media (min-width: 768px) {
     .ChatGPT {
-
-    }
-
-    .ChatGPTForm {
-
+        width: 60%;
+        padding: 1rem;
     }
 
     .SearchIconBlack {
@@ -77,17 +78,12 @@ li {
 
 @media (min-width: 1024px) {
     .ChatGPT {
-        flex-grow: 2;
-        margin: auto; /*??????*/
-    }
-
-    .ChatGPTForm {
-        padding: 2rem;
-        font-size: 1rem;
+        width: 35%;
+        padding: 1.5rem;
     }
 
     .SearchIconBlack {
-        height: 30px;
-        width: 30px;
+        height: 25px;
+        width: 25px;
     }
 }

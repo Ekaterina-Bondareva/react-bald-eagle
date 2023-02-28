@@ -61,7 +61,10 @@ const TodoListItem = ({item, onRemoveTodo, onCompletedCheck, editTodoItem}) => {
             <div>
                 {errorMessage !== '' ? (<p className={styles.Error} >{errorMessage}</p>) :(<p></p>)}
             </div>
-            <li className={styles.ListItem}>
+            <li 
+                className={styles.ListItem} 
+                style={{textDecoration: completed ? "line-through" : "none"}}
+            >
                 <span>
                     <button 
                         className={styles.ListItemCheckbox} 

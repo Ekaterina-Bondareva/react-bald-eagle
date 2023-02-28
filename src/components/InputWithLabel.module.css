@@ -1,6 +1,7 @@
 .TodoInput {
     border: none;
     outline: none;
+    width: 90%;
 }
 
 textarea:focus, input:focus {
