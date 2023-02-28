@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import styles from './Quote.module.css';
 
 
+// Fetch Random Motivating Quote from https://type.fit/api/quotes
 const Quote = () => {
     const [quote, setQuote] = useState({});
 
     const getRandomNumber = (num) => Math.floor(Math.random() * num);
 
-    //Fetch Random Quote from https://type.fit/api/quotes
     useEffect(() => {
         fetch("https://type.fit/api/quotes", {
             method: 'GET',
@@ -15,7 +15,6 @@ const Quote = () => {
         .then((response) => response.json())
         .then(result => {
             const randomIndex = getRandomNumber(result.length);
-
             setQuote({
                 "text": result[randomIndex].text, 
                 "author": result[randomIndex].author
@@ -27,8 +26,8 @@ const Quote = () => {
     return (
         <>
             <div className={styles.QuoteContainer}>
-                <div className={styles.Quote}>{`"${quote.text}"`}</div>
-                <div className={styles.Author}>{quote.author}</div>
+                <p className={styles.Quote}>{`"${quote.text}"`}</p>
+                <p>{quote.author}</p>
             </div>
         </>
     );
