@@ -21,10 +21,6 @@
 }
 
 @media (min-width: 768px) {
-    .HomePage {
-        flex-grow: 2;
-    }
-
     .Time {
         font-size: 4.5rem;
     }
@@ -39,10 +35,6 @@
 }
 
 @media (min-width: 1024px) {    
-    .HomePage {
-        flex-grow: 2;
-    }
-
     .Time {
         font-size: 5.5rem;
     }
