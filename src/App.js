@@ -8,12 +8,15 @@ import ChatGPT from './components/ChatGPT';
 import styles from './App.module.css';
 
 
+/* App Component is the main component in React which acts as a container for all other components. 
+App. js is the "top component" that contains the logic of Application */
+
+// Fetch and render Background Image from https://unsplash.com/developers
 const App = ()  => {
   const [backgroundImage, setBackgroundImage] = useState({});
 
   const [isError, setIsError] = useState(false);
 
-  //Fetch Background Image from https://unsplash.com/developers
   useEffect(() => {
     const backgroundImageUrl = `https://api.unsplash.com/photos/random?orientation=landscape&query=nature&client_id=oTTC8RDgHH3UB6TLrQMYu7RVzo9caw6p0jIuj3g2Cz0`;
 
@@ -30,10 +33,9 @@ const App = ()  => {
     .catch(() => setIsError(true));
   }, []);
 
-
   return (
     <div style={{backgroundImage: `url(${backgroundImage.url}&w=${useRef(window.innerWidth).current})`}}>
-      {isError && <p>Something went wrong ...</p>}
+      {isError && <p className={styles.backgroundImageError}>Something went wrong ...</p>}
       <BrowserRouter>
       <div className={styles.AppBody} >
         <Header />
