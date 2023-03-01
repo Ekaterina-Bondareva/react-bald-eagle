@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ReactComponent as SearchIconBlack } from '../icons/search-black.svg';
-import DropdownLinks from './DropdownLinks';
+import PropTypes from 'prop-types';
 import styles from './ChatGPT.module.css';
 import { MdClose } from 'react-icons/md';
 
 
 //Fetch ChatGPT from https://api.openai.com/v1/completions
 //https://www.codeproject.com/Articles/5350454/Chat-GPT-in-JavaScript
-const ChatGPT = () => {
+const ChatGPT = ({dropdownLinks}) => {
     const [query, setQuery] = useState('');
     const [results, setResults] = useState([]);
-    const [isLoading, setLoading] = useState(false);
-    const navigate = useNavigate();
+    const [isLoading, setLoading] = useState(false)
 
     const queryChatgpt = (e) => {
         e.preventDefault()
@@ -67,7 +66,8 @@ const ChatGPT = () => {
         <div className={styles.ChatGPT}>
             <form onSubmit={queryChatgpt}>
                 <div className={styles.ChatGPTNavBar}>
-                    <DropdownLinks nav={navigate}/>
+                    {/* <DropdownLinks nav={navigate}/> */}
+                    {dropdownLinks}
                     <Link to="/home">
                         <button type= "button" className={styles.CloseChatGPTButton}><MdClose className={styles.CloseBtn}/></button>
                     </Link>
@@ -101,5 +101,9 @@ const ChatGPT = () => {
         </div>
     );
 }
+
+ChatGPT.propTypes = {
+    dropdownLinks: PropTypes.element
+};
 
 export default ChatGPT;

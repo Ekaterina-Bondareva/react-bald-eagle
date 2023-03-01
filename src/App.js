@@ -5,6 +5,7 @@ import Header from './components/Header';
 import HomePage from './components/HomePage';
 import Footer from './components/Footer';
 import ChatGPT from './components/ChatGPT';
+import DropdownLinks from './components/DropdownLinks';
 import styles from './App.module.css';
 
 
@@ -33,6 +34,10 @@ const App = ()  => {
     .catch(() => setIsError(true));
   }, []);
 
+  const [selectedItem, setSelectedItem ] = useState('/');
+
+  const commonDropDown = <DropdownLinks selected={selectedItem} setSelected={setSelectedItem}/> ;
+
   return (
     <div style={{backgroundImage: `url(${backgroundImage.url}&w=${useRef(window.innerWidth).current})`}}>
       {isError && <p className={styles.backgroundImageError}>Something went wrong ...</p>}
@@ -40,12 +45,12 @@ const App = ()  => {
       <div className={styles.AppBody} >
         <Header />
           <Routes>
-            <Route exact path="/" element={<TodoContainer listId='1'/>}></Route>
+            <Route exact path="/" element={<TodoContainer listId='1' ddLinks={commonDropDown}/>}></Route>
             <Route path="/home" element={<HomePage />}></Route>
-            <Route  path='/travel' element={<TodoContainer listId='2'/>}></Route>
-            <Route  path='/education' element={<TodoContainer listId='3'/>}></Route>
-            <Route  path='/family' element={<TodoContainer listId='4'/>}></Route>
-            <Route  path='/chatgpt' element={<ChatGPT />}></Route>
+            <Route  path='/travel' element={<TodoContainer listId='2' ddLinks={commonDropDown}/>}></Route>
+            <Route  path='/education' element={<TodoContainer listId='3' ddLinks={commonDropDown}/>}></Route>
+            <Route  path='/family' element={<TodoContainer listId='4' ddLinks={commonDropDown}/>}></Route>
+            <Route  path='/chatgpt' element={<ChatGPT dropdownLinks={commonDropDown}/>}></Route>
           </Routes>
         <Footer />
       </div>

@@ -1,18 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import AddTodoForm from './AddTodoForm.js';
 import TodoList from './TodoList';
 import ToggleSwitch from './ToggleSwitch.js';
-import DropdownLinks from './DropdownLinks.js';
 import PropTypes from 'prop-types';
 import styles from './TodoContainer.module.css';
 import { MdClose } from "react-icons/md";
 
 
-const TodoContainer = ({listId}) => {
+const TodoContainer = ({listId, ddLinks}) => {
     const url = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`;
-
-    const navigate = useNavigate();
 
     const [todoList, setTodoList] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -179,7 +176,8 @@ const TodoContainer = ({listId}) => {
             ) : (
                 <div className={styles.TodoContainer}>
                     <div className={styles.TodoNavBar}>
-                        <DropdownLinks nav={navigate}/>
+                        {/* <DropdownLinks nav={navigate}/> */}
+                        {ddLinks}
                         <Link to="/home">
                             <button type= "button" className={styles.CloseTodoButton}><MdClose className={styles.CloseBtn}/></button>
                         </Link>
@@ -202,7 +200,8 @@ const TodoContainer = ({listId}) => {
 
 
 TodoContainer.propTypes = {
-    listId: PropTypes.string
+    listId: PropTypes.string,
+    ddLinks: PropTypes.element
 };
 
 

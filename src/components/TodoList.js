@@ -8,7 +8,6 @@ import PropTypes from 'prop-types';
 const TodoList = ({todoList, onRemoveTodo, markCompleted, editTodoItem}) => {
   // Function that check that all todo items were completed
   const isCompleted = (todoList) => {
-    console.log(todoList.length)
     return todoList.length > 0 && todoList.reduce((accumulator, currentValue) => 
       accumulator && (currentValue.fields.Completed !== 'undefined' && currentValue.fields.Completed), 
     true);
@@ -28,7 +27,16 @@ const TodoList = ({todoList, onRemoveTodo, markCompleted, editTodoItem}) => {
           <TodoListItem 
             key={item.id}
             item={item} 
-            onRemoveTodo={onRemoveTodo} 
+            onRemoveTodo={() => {
+              // Remove from database
+              onRemoveTodo(item.id);
+              // Remove from list
+              todoList = todoList.filter(
+                (todo) => item.id !== todo.id
+              );
+              // Recalculate status
+              setCompleted(isCompleted(todoList));
+            }} 
             editTodoItem={editTodoItem}
             // Recalculated completed status
             onCompletedCheck={() => {
