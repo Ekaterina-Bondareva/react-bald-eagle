@@ -1,8 +1,6 @@
 .CitySearchContainer{ 
     display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    column-gap: 0.3rem;
+    column-gap: 0.5rem;
 }
 
 .Weather {
@@ -21,8 +19,12 @@
     color: #fff;  
     border: 0;
     outline: 0;
-    border-bottom: 0.5px solid #fff;
+    border-bottom: 0.3px solid #fff;
     background-color: transparent;
+}
+
+.City:focus {
+    color: #fff;
 }
 
 .City::placeholder {  
@@ -31,7 +33,7 @@
     opacity: .6;
 }
 
-.SearchIcon {
+.SearchIconWhite {
     display: flex;
     height: 20px;
     width: 20px;
@@ -60,28 +62,36 @@
 }
 
 @media (min-width: 768px) {
-    
-    .City::placeholder {  
-        font-size: 0.75rem;
-        color: #fff;
-        opacity: .6;
+    .Weather {
+        width: 25%;
     }
-    
 
-    .SearchIcon {
-        display: flex;
+    .Temperature {
+        font-size: 1.1rem;
+    }
+
+    .SearchIconWhite {
         height: 25px;
         width: 25px;
     }
 
-    .SearchBtn {
-        background: none;
-        border: none;
+    .City {
+        width: 150px;
+        font-size: 20px;
+        line-height: 20px;
+        color: #fff;  
+        border: 0;
+        outline: 0;
+        border-bottom: 0.3px solid #fff;
+        background-color: transparent;
+    }
+    
+    .City::placeholder {  
+        font-size: 1rem;
     }
 }
 
 @media (min-width: 1024px) {
-
     .Weather {
         display: flex;
         flex-direction: column;
@@ -124,6 +134,10 @@
         border-bottom: 1px solid #fff;
         background-color: transparent;
     }
+
+    .City:focus {
+            color: #fff;
+    }
     
     .City::placeholder {  
         font-size: 1rem;
@@ -131,8 +145,7 @@
         opacity: .6;
     }
 
-    .SearchIcon {
-        display: flex;
+    .SearchIconWhite {
         height: 30px;
         width: 30px;
     }

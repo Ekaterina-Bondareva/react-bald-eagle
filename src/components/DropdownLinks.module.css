@@ -1,0 +1,17 @@
+.DropdownLinks {
+    border: none;
+    outline: none;
+    font-size: 0.7rem;
+}
+
+@media (min-width: 768px) {
+    .DropdownLinks {
+        font-size: 0.8rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .DropdownLinks {
+        font-size: 0.9rem;
+    }
+}

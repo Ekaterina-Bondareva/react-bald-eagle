@@ -1,9 +1,23 @@
 .ToggleSwitch {
     display: flex;
     align-items: center;
-    margin-bottom: 1rem;
 }
 
 .ToggleSwitchLabel {
-    margin-right: 20px;
+    font-size: 0.7rem;
+    margin-right: 10px;
+}
+
+@media (min-width: 768px) {
+    .ToggleSwitchLabel {
+        font-size: 0.8rem;
+        margin-right: 15px;
+    }
+}
+
+@media (min-width: 1024px) {  
+    .ToggleSwitchLabel {
+        font-size: 0.9rem;
+        margin-right: 20px;
+    }
 }

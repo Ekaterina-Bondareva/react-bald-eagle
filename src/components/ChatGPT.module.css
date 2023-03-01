@@ -1,0 +1,113 @@
+.ChatGPT {
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* justify-content: flex-start; */
+    flex-grow: 2;
+    background: #fff;
+    border-radius: 20px;
+    width: 90%;
+    margin: auto; /* ????*/
+    padding: 1.5rem;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.ChatGPTNavBar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.CloseChatGPTButton {
+    border: none;
+    background: none;
+}
+
+.ChatGPTInputForm {
+    display: flex;
+    justify-content: space-around;
+}
+
+.ChatGPTInput {
+    border: none;
+    outline: none;
+    width: 100%;
+    margin-bottom: 1rem;
+    font-size: 0.7rem;
+}
+
+.ChatGPTBtn {
+    background: none;
+    border: none;
+    margin-bottom: 1rem;
+}
+
+.CloseBtn {
+    height: 25px;
+    width: 25px;
+}
+
+.SearchIconBlack {
+    height: 20px;
+    width: 20px;
+}
+
+.ChatGPTLoading {
+    text-align: center;
+    font-size: 0.7rem;
+    font-style: italic;
+    color: #A9A9A9;
+}
+
+li {
+    margin-top: 0.5rem;
+    list-style-type: none; 
+    text-align: justify;
+    font-size: 0.7rem;
+}
+
+@media (min-width: 768px) {
+    .ChatGPT {
+        width: 60%;
+    }
+
+    .ChatGPTInput {
+        font-size: 0.8rem;
+    }
+
+    .SearchIconBlack {
+        height: 20px;
+        width: 20px;
+    }
+
+    .ChatGPTLoading {
+        font-size: 0.8rem;
+    }
+
+    li {
+        font-size: 0.8rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .ChatGPT {
+        width: 35%;
+    }
+
+    .ChatGPTInput {
+        font-size: 0.9rem;
+    }
+
+
+    .SearchIconBlack {
+        height: 20px;
+        width: 20px;
+    }
+
+    .ChatGPTLoading {
+        font-size: 0.9em;
+    }
+
+    li {
+        font-size: 0.9rem;
+    }
+}

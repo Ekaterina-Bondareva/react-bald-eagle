@@ -1,8 +1,9 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ReactComponent as HomeIcon } from '../icons/home.svg';
 import Weather from "./Weather";
 import styles from './Header.module.css';
+
 
 const Header = () => {
     return (
@@ -14,5 +15,6 @@ const Header = () => {
         </header>
     )
 }
+
 
 export default Header;

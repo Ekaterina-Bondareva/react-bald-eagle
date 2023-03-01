@@ -4,28 +4,69 @@ body {
     min-height: 100%;
 }
 
+.TodoError {
+    display: flex;
+    align-items: center;
+    margin: auto;
+    color: #fff;
+}
+
+.Loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    color: #fff;
+}
+
 .TodoContainer {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
+    flex-grow: 2;
     background: #fff;
     border-radius: 20px;
     width: 90%;
     margin: auto;
-    padding: 1rem;
+    padding: 1.5rem;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.TodoNavBar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.7rem;
+}
+
+.CloseTodoButton {
+    border: none;
+    background: none;
+}
+
+.CloseBtn {
+    height: 25px;
+    width: 25px;
+}
+
+.SortBySelect {
+    border: none;
+    outline: none;
+}
+
+.SortContainer {
+    display: flex;
+    justify-content:space-around;
+    margin-bottom: 0.7rem;
 }
 
 @media (min-width: 768px) {
     .TodoContainer {
         width: 60%;
-        padding: 1rem;
     }
 }
 
 @media (min-width: 1024px) {
     .TodoContainer {
-        width: 30%;
-        padding: 1.5rem;
+        width: 35%;
     }
 }

@@ -1,19 +1,15 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import AddTodoForm from './AddTodoForm.js';
 import TodoList from './TodoList';
-import styles from './TodoContainer.module.css';
 import ToggleSwitch from './ToggleSwitch.js';
 import PropTypes from 'prop-types';
-import Select from 'react-select';
+import styles from './TodoContainer.module.css';
+import { MdClose } from "react-icons/md";
 
 
-const TodoContainer = ({listId}) => {
+const TodoContainer = ({listId, ddLinks}) => {
     const url = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`;
-
-    const options = [
-        {value: 'completed', label: 'Completed'},
-        {value: 'title', label: 'Title'}
-    ]
 
     const [todoList, setTodoList] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -174,15 +170,26 @@ const TodoContainer = ({listId}) => {
 
     return (
         <>
-            {isError && <p>Something went wrong ...</p>}
+            {isError && <p className={styles.TodoError}>Something went wrong ...</p>}
             {isLoading ? (
                 <p className={styles.Loading}>Loading...</p> 
             ) : (
                 <div className={styles.TodoContainer}>
-                    <ToggleSwitch toggleChecked={toggleChecked} handleToggleChange={handleToggleChange}/>
-                    <Select options={options} defaultValue={{value: 'completed', label: 'Completed'}} onChange={(e) => {
-                        setSortField(e.value)
-                    }}/>
+                    <div className={styles.TodoNavBar}>
+                        {/* <DropdownLinks nav={navigate}/> */}
+                        {ddLinks}
+                        <Link to="/home">
+                            <button type= "button" className={styles.CloseTodoButton}><MdClose className={styles.CloseBtn}/></button>
+                        </Link>
+                    </div>
+                    <div className={styles.SortContainer}>
+                        <select className={styles.SortBySelect} onChange={(e) => {setSortField(e.target.value)}}>
+                            <option value="">Sort By</option>
+                            <option value="completed">Completed</option>
+                            <option value="title">Title</option>
+                        </select>
+                        <ToggleSwitch toggleChecked={toggleChecked} handleToggleChange={handleToggleChange}/>
+                    </div>
                     <TodoList todoList={todoList}  onRemoveTodo={removeTodo} markCompleted={markCompleted} editTodoItem={editTodoItem}/>
                     <AddTodoForm onAddTodo={addTodo}/>
                 </div>
@@ -193,7 +200,8 @@ const TodoContainer = ({listId}) => {
 
 
 TodoContainer.propTypes = {
-    listId: PropTypes.string
+    listId: PropTypes.string,
+    ddLinks: PropTypes.element
 };
 
 

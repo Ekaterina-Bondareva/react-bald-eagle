@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from 'react';
 import styles from './Dropdown.module.css';
 import PropTypes from 'prop-types';
 
 
-//Creating Dropdown reusable component (https://www.robinwieruch.de/react-dropdown/)
+//Create Dropdown reusable component for Edit/Delete menu 
+//(https://www.robinwieruch.de/react-dropdown/)
 const Dropdown = ({ trigger, menu }) => {
     const [open, setOpen] = useState(false);
 

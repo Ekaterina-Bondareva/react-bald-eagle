@@ -1,21 +1,20 @@
 .ListItem {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
     display: flex;
-    flex-direction: row;
-    /* align-items:flex-start; */
     justify-content: space-between;
-    /* text-align: left; */
-    margin-top: 0.75em;
-    color: #0d1b2a;
-    list-style-type: none;
+    margin-top: 0;
+    font-size: 0.7rem;
 }
 
 .ListItemCheckbox {
+    vertical-align: text-top;
     border: none;
     position: relative; 
     transition: 1s;
     background: none;
     color: #0d1b2a;
-    margin-right: 0.5rem;
+    margin-right: 0.75rem;
 }
 
 .Error {
@@ -25,11 +24,31 @@
     list-style-type: none;
 }
 
-.Hamburger {
+.EditableInput {
     border: none;
-    position: relative; 
-    transition: 1s;
+    outline: none;
+}
+
+.MoreBtn {
+
+    border: none;
     background: none;
-    background-color: #fff;
-    margin: 0 0 0 0
+}
+
+.IoIosMore {
+    height: 22px;
+    width: 22px;
+}
+
+@media (min-width: 768px) {
+    .ListItem {
+        font-size: 0.8rem;
+    }
+}
+
+@media (min-width: 1024px) {  
+    .ListItem {
+        font-size: 0.9rem;
+        padding: 10px 0;
+    }
 }

@@ -1,9 +1,10 @@
-import React, {useRef, useEffect} from 'react';
+import React,  {useRef, useEffect } from 'react';
 import styles from './InputWithLabel.module.css';
 import PropTypes from 'prop-types';
+import { MdAdd } from "react-icons/md";
 
 
-const InputWithLabel = ({todoTitle, handleTitleChange, handleKeyDown, children}) => {
+const InputWithLabel = ({todoTitle, handleTitleChange, handleKeyDown}) => {
 
     const inputRef = useRef();
 
@@ -12,8 +13,7 @@ const InputWithLabel = ({todoTitle, handleTitleChange, handleKeyDown, children})
     });
 
     return (
-        <>
-            {/* <label className={styles.TodoLabel} htmlFor="todoTitle">{children}</label> */}
+        <div className={styles.TodoInputContainer}>
             <input 
                 className={styles.TodoInput}
                 ref={inputRef}
@@ -25,8 +25,10 @@ const InputWithLabel = ({todoTitle, handleTitleChange, handleKeyDown, children})
                 onKeyDown={handleKeyDown}
                 onChange={handleTitleChange}>
             </input>
-            <button className={styles.TodoButton} type="submit">Add</button>
-        </>
+            <button className={styles.TodoButton} type="submit">
+                <MdAdd  className={styles.AddIcon}/>
+            </button>
+        </div>
     );
 } 
 
@@ -35,7 +37,6 @@ InputWithLabel.propTypes = {
     handleTitleChange: PropTypes.func,
     handleKeyDown: PropTypes.func,
     todoTitle: PropTypes.string,
-    children: PropTypes.string
 };
 
 

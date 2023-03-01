@@ -1,18 +1,23 @@
-import React, {useState, useEffect, useRef} from 'react';
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import React, { useState, useEffect, useRef } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import TodoContainer from './components/TodoContainer';
 import Header from './components/Header';
-import Footer from './components/Footer';
 import HomePage from './components/HomePage';
+import Footer from './components/Footer';
+import ChatGPT from './components/ChatGPT';
+import DropdownLinks from './components/DropdownLinks';
 import styles from './App.module.css';
 
 
+/* App Component is the main component in React which acts as a container for all other components. 
+App. js is the "top component" that contains the logic of Application */
+
+// Fetch and render Background Image from https://unsplash.com/developers
 const App = ()  => {
   const [backgroundImage, setBackgroundImage] = useState({});
 
   const [isError, setIsError] = useState(false);
 
-  //Fetch Background Image from https://unsplash.com/developers
   useEffect(() => {
     const backgroundImageUrl = `https://api.unsplash.com/photos/random?orientation=landscape&query=nature&client_id=oTTC8RDgHH3UB6TLrQMYu7RVzo9caw6p0jIuj3g2Cz0`;
 
@@ -22,28 +27,30 @@ const App = ()  => {
     .then((response) => response.json())
     .then(result => {
       setBackgroundImage({
-            "url": result.urls.raw 
+          "url": result.urls.raw 
         })
         setIsError(false);
     })
     .catch(() => setIsError(true));
   }, []);
 
+  const [selectedItem, setSelectedItem ] = useState('/');
+
+  const commonDropDown = <DropdownLinks selected={selectedItem} setSelected={setSelectedItem}/> ;
 
   return (
-    <div 
-      style={{backgroundImage: `url(${backgroundImage.url}&w=${useRef(window.innerWidth).current})`}}
-    >
-      {isError && <p>Something went wrong ...</p>}
+    <div style={{backgroundImage: `url(${backgroundImage.url}&w=${useRef(window.innerWidth).current})`}}>
+      {isError && <p className={styles.backgroundImageError}>Something went wrong ...</p>}
       <BrowserRouter>
       <div className={styles.AppBody} >
         <Header />
           <Routes>
-            <Route exact path="/" element={<TodoContainer listId='1'/>}></Route>
+            <Route exact path="/" element={<TodoContainer listId='1' ddLinks={commonDropDown}/>}></Route>
             <Route path="/home" element={<HomePage />}></Route>
-            <Route  path='/travel' element={<TodoContainer listId='2'/>}></Route>
-            <Route  path='/education' element={<TodoContainer listId='3'/>}></Route>
-            <Route  path='/family' element={<TodoContainer listId='4'/>}></Route>
+            <Route  path='/travel' element={<TodoContainer listId='2' ddLinks={commonDropDown}/>}></Route>
+            <Route  path='/education' element={<TodoContainer listId='3' ddLinks={commonDropDown}/>}></Route>
+            <Route  path='/family' element={<TodoContainer listId='4' ddLinks={commonDropDown}/>}></Route>
+            <Route  path='/chatgpt' element={<ChatGPT dropdownLinks={commonDropDown}/>}></Route>
           </Routes>
         <Footer />
       </div>

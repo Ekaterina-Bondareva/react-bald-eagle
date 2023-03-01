@@ -1,9 +1,9 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import styles from './HomePage.module.css';
 
 
+//Create App HomePage with Current Time, Date and Greeting on it
 const HomePage = () => {
-    //Handle Time, Date and Greeting on Home Page
     const options = {weekday: 'long', month: 'long', day: 'numeric'};
 
     const [date, setDate] = useState(new Date());
