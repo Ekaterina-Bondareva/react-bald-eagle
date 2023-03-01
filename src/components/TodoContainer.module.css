@@ -62,13 +62,11 @@ body {
 @media (min-width: 768px) {
     .TodoContainer {
         width: 60%;
-        padding: 1rem;
     }
 }
 
 @media (min-width: 1024px) {
     .TodoContainer {
         width: 35%;
-        padding: 1.5rem;
     }
 }

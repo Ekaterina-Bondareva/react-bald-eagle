@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import styles from './ChatGPT.module.css';
-import DropdownLinks from './DropdownLinks';
 import { ReactComponent as SearchIconBlack } from '../icons/search-black.svg';
-import { MdClose } from "react-icons/md";
+import DropdownLinks from './DropdownLinks';
+import styles from './ChatGPT.module.css';
+import { MdClose } from 'react-icons/md';
 
+
+//Fetch ChatGPT from https://api.openai.com/v1/completions
+//https://www.codeproject.com/Articles/5350454/Chat-GPT-in-JavaScript
 const ChatGPT = () => {
-
     const [query, setQuery] = useState('');
     const [results, setResults] = useState([]);
     const [isLoading, setLoading] = useState(false);
     const navigate = useNavigate();
 
-    //https://www.codeproject.com/Articles/5350454/Chat-GPT-in-JavaScript
     const queryChatgpt = (e) => {
         e.preventDefault()
         if (query.length === 0) {
@@ -64,7 +65,7 @@ const ChatGPT = () => {
 
     return (
         <div className={styles.ChatGPT}>
-            <form onSubmit={queryChatgpt} className={styles.ChatGPTForm}>
+            <form onSubmit={queryChatgpt}>
                 <div className={styles.ChatGPTNavBar}>
                     <DropdownLinks nav={navigate}/>
                     <Link to="/home">
@@ -88,10 +89,10 @@ const ChatGPT = () => {
                     results.length > 0 ? (
                     <ul>
                         {results.map((item, index) => (
-                                <li key={index}>
-                                    {item}
-                                </li>
-                            ))}
+                            <li key={index}>
+                                {item}
+                            </li>
+                        ))}
                     </ul>) 
                     : (null)
                     }
