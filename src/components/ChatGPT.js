@@ -69,7 +69,7 @@ const ChatGPT = ({dropdownLinks}) => {
                     {/* <DropdownLinks nav={navigate}/> */}
                     {dropdownLinks}
                     <Link to="/home">
-                        <button type= "button" className={styles.CloseChatGPTButton}><MdClose className={styles.CloseBtn}/></button>
+                        <button type= "button" className={styles.CloseButton}><MdClose className={styles.CloseIcon}/></button>
                     </Link>
                 </div>
                 <div className={styles.ChatGPTInputForm}>
@@ -79,7 +79,7 @@ const ChatGPT = ({dropdownLinks}) => {
                         placeholder="Ask ChatGPT"
                         defaultValue={query} onChange={(e) => {setQuery(e.target.value)}}
                     />
-                    <button type='submit' className = {styles.ChatGPTBtn}>
+                    <button type='submit' className = {styles.ChatGPTButton}>
                         <SearchIconBlack  className={styles.SearchIconBlack}/>
                     </button>
                 </div>

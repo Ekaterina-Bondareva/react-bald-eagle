@@ -38,12 +38,12 @@ body {
     margin-bottom: 0.7rem;
 }
 
-.CloseTodoButton {
+.CloseButton {
     border: none;
     background: none;
 }
 
-.CloseBtn {
+.CloseIcon {
     height: 25px;
     width: 25px;
 }

@@ -15,7 +15,7 @@ const ToggleSwitch = ({toggleChecked, handleToggleChange}) => {
                 checked={toggleChecked}
                 onChange={handleToggleChange}
                 onColor='#415A77'
-                offColor="#A9A9A9"
+                offColor="#858585"
             />
         </div>
     );
