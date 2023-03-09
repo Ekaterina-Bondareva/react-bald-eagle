@@ -5,7 +5,7 @@ import TodoList from './TodoList';
 import ToggleSwitch from './ToggleSwitch.js';
 import PropTypes from 'prop-types';
 import styles from './TodoContainer.module.css';
-import { MdClose } from "react-icons/md";
+import { MdClose } from 'react-icons/md';
 
 
 const TodoContainer = ({listId, ddLinks}) => {
@@ -179,7 +179,7 @@ const TodoContainer = ({listId, ddLinks}) => {
                         {/* <DropdownLinks nav={navigate}/> */}
                         {ddLinks}
                         <Link to="/home">
-                            <button type= "button" className={styles.CloseTodoButton}><MdClose className={styles.CloseBtn}/></button>
+                            <button type= "button" className={styles.CloseButton}><MdClose className={styles.CloseIcon} /></button>
                         </Link>
                     </div>
                     <div className={styles.SortContainer}>

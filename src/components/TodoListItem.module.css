@@ -29,15 +29,26 @@
     outline: none;
 }
 
-.MoreBtn {
-
+.EditButton {
+    margin-left: 10px;
     border: none;
     background: none;
 }
 
-.IoIosMore {
-    height: 22px;
-    width: 22px;
+.EditIcon {
+    height: 20px;
+    width: 20px;
+}
+
+.DeleteButton {
+    margin-left: 5px;
+    border: none;
+    background: none;
+}
+
+.DeleteIcon {
+    height: 20px;
+    width: 20px;
 }
 
 @media (min-width: 768px) {

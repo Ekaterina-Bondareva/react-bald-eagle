@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './TodoListItem.module.css';
 import { ReactComponent as CheckedCheckboxIcon } from '../icons/checkedCheckbox.svg';
 import { ReactComponent as EmptyCheckboxIcon } from '../icons/emptyCheckbox.svg';
-import Dropdown from './Dropdown';
-import { IoIosMore } from "react-icons/io";
+import { MdOutlineDelete, MdOutlineEdit } from 'react-icons/md';
 
 
 const TodoListItem = ({item, onRemoveTodo, onCompletedCheck, editTodoItem}) => {
@@ -90,13 +89,8 @@ const TodoListItem = ({item, onRemoveTodo, onCompletedCheck, editTodoItem}) => {
                     }
                 </span>
                 <span>  
-                    <Dropdown 
-                        trigger={<button className={styles.MoreBtn}><IoIosMore className={styles.IoIosMore} /></button>}
-                        menu={[
-                            <button onClick={handleEditClick}>Edit</button>,
-                            <button onClick={handleDeleteClick}>Delete</button>,
-                        ]}
-                    />  
+                    <button onClick={handleEditClick} className={styles.EditButton}><MdOutlineEdit className={styles.EditIcon} /></button>
+                    <button onClick={handleDeleteClick} className={styles.DeleteButton}><MdOutlineDelete className={styles.DeleteIcon} /></button> 
                 </span>
             </li>
         </>
